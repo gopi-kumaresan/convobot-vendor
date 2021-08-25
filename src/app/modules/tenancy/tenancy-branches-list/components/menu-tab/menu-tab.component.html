@@ -1,0 +1,82 @@
+<div class="row _wid100">
+  <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-4">
+    <!-- <div class="_categoriesCard card card-custom"> -->
+    <div class="row" style="margin: 0px">
+      <div class="col-8">
+        <h5 class="mt-8 mb-3">Categories</h5>
+      </div>
+
+      <!-- <div class="col-4 mt-9 _expandIcon">
+          <img
+            (click)="expandCategories = !expandCategories"
+            [src]="
+              !expandCategories
+                ? './assets/media/convobot-icon/down-arrow.png'
+                : './assets/media/convobot-icon/up-arrow.png'
+            "
+          />
+        
+        </div> -->
+    </div>
+
+    <div class="list list-hover" *ngIf="expandCategories">
+      <div
+        class="list-item hoverable p-2 p-lg-3"
+        [ngClass]="{ _activeRowWithBorder: i == 1 }"
+        *ngFor="let cate of CategoriesList; let i = index"
+      >
+        <div class="d-flex align-items-center">
+          <div class="d-flex flex-column flex-grow-1 mr-2">
+            <span class="mb-1 mt-1" style="color: #7e7e81; font-weight: 500"
+              >{{ cate.name }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- </div> -->
+  </div>
+
+  <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-xs-12">
+    <div class="row mt-2 _wid100">
+      <!-- <div
+        class="card card-custom"
+        style="width: 100%; height: 443px; overflow: auto"
+      > -->
+      <div *ngFor="let subCate of subCategories" class="_wid100">
+        <h5 style="margin: 16px 9px 16px 9px">{{ subCate.title }}</h5>
+        <div
+          style="border: 1px solid #ecf1f6; padding: 10px"
+          *ngFor="let priceData of subCate.datas"
+          [ngClass]="{ _bodyBackgroundColor: !priceData.status }"
+        >
+          <div class="row">
+            <div class="col-xl-8 col-lg-12 pb-1 pt-1" style="display: inherit">
+              <span
+                style="padding-top: 5px; padding-right: 5px"
+                [inlineSVG]="'./assets/media/svg/icons/General/setting.svg'"
+                cacheSVG="true"
+                class="svg-icon svg-icon-xl"
+              ></span>
+
+              <div>
+                <span class="font-weight-bold mb-3">{{
+                  priceData.sub_categories_name
+                }}</span
+                ><br />
+                <span class="text-muted">{{ priceData.price }}</span>
+              </div>
+            </div>
+
+            <div class="col-xl-4 col-lg-12 pb-1 pt-1">
+              <mat-slide-toggle
+                [(ngModel)]="priceData.status"
+              ></mat-slide-toggle>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- </div> -->
+    </div>
+  </div>
+</div>

@@ -1,0 +1,183 @@
+<!--begin::Subheader-->
+<div
+  class="subheader py-3 py-lg-4"
+  [ngClass]="subheaderCSSClasses"
+  id="kt_subheader"
+>
+  <div
+    [ngClass]="subheaderContainerCSSClasses"
+    class="d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap"
+  >
+    <!--begin::Info-->
+    <div class="d-flex align-items-center mr-1">
+      <ng-container *ngIf="subheaderMobileToggle">
+        <!--begin::Mobile Toggle-->
+        <button
+          class="burger-icon burger-icon-left mr-4 d-inline-block d-lg-none"
+          id="kt_subheader_mobile_toggle"
+        >
+          <span></span>
+        </button>
+        <!--end::Mobile Toggle-->
+      </ng-container>
+
+      <!--begin::Page Heading-->
+      <div class="d-flex align-items-baseline flex-wrap mr-5">
+        <!--begin::Page Title-->
+        <ng-container *ngIf="title$ | async as _title">
+          <h2
+            class="d-flex align-items-center text-dark font-weight-bold my-1 mr-3"
+          >
+            {{ _title }}
+            <ng-container *ngIf="subheaderDisplayDesc">
+              <ng-container *ngIf="description$ | async as _description">
+                <small>{{ _description }}</small>
+              </ng-container>
+            </ng-container>
+          </h2>
+        </ng-container>
+        <!--end::Page Title-->
+        <!--begin::Breadcrumb-->
+        <ul
+          class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold my-2 p-0"
+        >
+          <li
+            class="breadcrumb-item"
+            *ngFor="let bc of breadcrumbs$ | async"
+            routerLinkActive="active"
+          >
+            <a [routerLink]="bc.linkPath" class="text-muted">
+              {{ bc.linkText }}
+            </a>
+          </li>
+        </ul>
+        <!--end::Breadcrumb-->
+      </div>
+      <!--end::Page Heading-->
+    </div>
+    <!--end::Info-->
+
+    <!--begin::Topbar-->
+    <div style="display: flex; height: 40px">
+      <div
+        class="d-flex align-items-center flex-wrap _cardBackgroundColor"
+        style="background: #ffffff"
+      >
+        <div>
+          <select name="country" class="form-control border-radius _borderNone">
+            <option value="" selected>Manama Branch</option>
+            <option value="AF">Manama Branch</option>
+            <option value="AX">Åland Islands</option>
+            <option value="AL">Albania</option>
+            <option value="DZ">Algeria</option>
+            <option value="AS">American Samoa</option>
+            <option value="AD">Andorra</option>
+            <option value="AO">Angola</option>
+            <option value="AI">Anguilla</option>
+            <option value="AQ">Antarctica</option>
+            <option value="AG">Antigua and Barbuda</option>
+            <option value="AR">Argentina</option>
+            <option value="AM">Armenia</option>
+            <option value="AW">Aruba</option>
+            <option value="AU" selected>Australia</option>
+            <option value="AT">Austria</option>
+            <option value="AZ">Azerbaijan</option>
+            <option value="BS">Bahamas</option>
+            <option value="BH">Bahrain</option>
+          </select>
+        </div>
+
+        <!-- Begin::status toggle -->
+        <mat-slide-toggle class="ml-2 mr-2"></mat-slide-toggle>
+        <!-- end::status toggle -->
+      </div>
+
+      <!--begin::Notifiction-->
+      <ng-container *ngIf="extrasQuickPanelDisplay">
+        <a
+          class="btn btn-icon btn-clean btn-lg mb-1 position-relative"
+          id="kt_quick_panel_toggle"
+        >
+          <span
+            [inlineSVG]="'./assets/media/svg/icons/Layout/Layout-4-blocks.svg'"
+            cacheSVG="true"
+            class="svg-icon svg-icon-xl"
+          ></span>
+          <span
+            class="label label-sm label-light-danger label-rounded font-weight-bolder position-absolute top-0 right-0 mt-1 mr-1"
+            >3</span
+          >
+        </a>
+      </ng-container>
+      <!--end::Notifiction-->
+
+      <!-- begin - user model  -->
+      <ng-container *ngIf="extrasUserDisplay">
+        <ng-container *ngIf="extrasUserLayout === 'offcanvas'">
+          <ng-container *ngIf="user$ | async as _user">
+            <!--begin::User-->
+            <a
+              class="btn btn-icon btn-clean btn-lg w-40px h-40px"
+              id="kt_quick_user_toggle"
+            >
+              <span class="symbol symbol-30 symbol-lg-40">
+                <span
+                  [inlineSVG]="'./assets/media/svg/icons/General/User.svg'"
+                  cacheSVG="true"
+                  class="svg-icon svg-icon-xl"
+                ></span>
+              </span>
+            </a>
+            <!--end::User-->
+          </ng-container>
+        </ng-container>
+
+        <ng-container *ngIf="extrasUserLayout === 'dropdown'">
+          <!--begin::User-->
+          <ng-container *ngIf="user$ | async as _user">
+            <div class="dropdown" ngbDropdown placement="bottom-right">
+              <div
+                class="topbar-item"
+                data-toggle="dropdown"
+                data-offset="0px,0px"
+                ngbDropdownToggle
+              >
+                <div
+                  class="btn btn-icon w-auto btn-clean d-flex align-items-center btn-lg px-2"
+                >
+                  <span
+                    class="text-muted font-weight-bold font-size-base d-none d-md-inline mr-1"
+                    >Hi,</span
+                  >
+                  <span
+                    class="text-dark-50 font-weight-bolder font-size-base d-none d-md-inline mr-3"
+                    >{{ _user.fullname }}</span
+                  >
+                  <span class="symbol symbol-35 symbol-light-success">
+                    <span class="symbol-label font-size-h5 font-weight-bold">{{
+                      _user.fullname
+                    }}</span>
+                  </span>
+                </div>
+              </div>
+              <!--end::Toggle-->
+              <!--begin::Dropdown-->
+              <div
+                ngbDropdownMenu
+                class="dropdown-menu p-0 m-0 dropdown-menu-right dropdown-menu-anim-up dropdown-menu-lg p-0"
+              >
+                <app-user-dropdown-inner></app-user-dropdown-inner>
+              </div>
+            </div>
+            <!--end::Dropdown-->
+          </ng-container>
+          <!--end::User-->
+        </ng-container>
+      </ng-container>
+      <!-- end - user model -->
+    </div>
+
+    <!--end::Topbar-->
+  </div>
+</div>
+<!--end::Subheader-->

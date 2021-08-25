@@ -1,0 +1,98 @@
+<!-- <div class="card card-custom card-stretch">
+  <div
+    class="card-body pt-4"
+    [ngClass]="
+      currentURL == '/setting/tenancy/tenancy-branch'
+        ? '_restaurentPageHeigth'
+        : '_noFilterCardheigth'
+    "
+  >
+    <div
+      (click)="display = true"
+      class="row mb-3 p-1 _cardBackgroundColor _curPointer"
+      *ngFor="let order of orderListData; let i = index"
+    >
+      <div class="col-xl-4 p-2">
+        <div class="font-weight-bold mt-1">Order Number :</div>
+        <div class="font-size-sm font-weight-bold mt-1 ml-2">
+          {{ order.orderNumber }}
+        </div>
+        <div class="font-weight-bold mt-1">Address :</div>
+        <div class="black _textOverflow mt-1 font-size-sm ml-2">
+          {{ order.address }}
+        </div>
+      </div>
+
+      <div class="col-xl-4 p-2">
+        <div class="font-weight-bold mt-1">Order Time :</div>
+        <div class="font-size-sm mt-1 ml-2">
+          {{ order.orderTime }}
+        </div>
+        <div class="font-weight-bold mt-1">Status :</div>
+        <div class="black _textOverflow mt-1 font-size-sm ml-2">
+          {{ order.status }}
+        </div>
+      </div>
+
+      <div class="col-xl-4 p-2">
+        <div class="font-weight-bold mt-1">Delivery time :</div>
+        <div class="font-size-sm mt-1 ml-2">
+          {{ order.orderTime }}
+        </div>
+        <div class="font-weight-bold mt-1">Order Value :</div>
+        <div class="black _textOverflow mt-1 font-size-sm ml-2">
+          {{ order.order_value }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div
+  (click)="display = true"
+  class="row _wid100 mb-3 _cardBackgroundColor"
+  *ngFor="let order of orderListData; let i = index"
+>
+  <div class="col-xl-4 p-2">
+    <div class="font-weight-bold mt-1">Order Number :</div>
+    <div class="font-size-sm font-weight-bold mt-1 ml-2">
+      {{ order.orderNumber }}
+    </div>
+    <div class="font-weight-bold mt-1">Address :</div>
+    <div class="black _textOverflow mt-1 font-size-sm ml-2">
+      {{ order.address }}
+    </div>
+  </div>
+
+  <div class="col-xl-4 p-2">
+    <div class="font-weight-bold mt-1">Order Time :</div>
+    <div class="font-size-sm mt-1 ml-2">
+      {{ order.orderTime }}
+    </div>
+    <div class="font-weight-bold mt-1">Status :</div>
+    <div class="black _textOverflow mt-1 font-size-sm ml-2">
+      {{ order.status }}
+    </div>
+  </div>
+
+  <div class="col-xl-4 p-2">
+    <div class="font-weight-bold mt-1">Delivery time :</div>
+    <div class="font-size-sm mt-1 ml-2">
+      {{ order.orderTime }}
+    </div>
+    <div class="font-weight-bold mt-1">Order Value :</div>
+    <div class="black _textOverflow mt-1 font-size-sm ml-2">
+      {{ order.order_value }}
+    </div>
+  </div>
+</div>
+
+<p-dialog
+  header="Order Details"
+  modal="true"
+  position="right"
+  [(visible)]="display"
+  class="_smallSizeModal"
+>
+  <app-order-details-model></app-order-details-model>
+</p-dialog>

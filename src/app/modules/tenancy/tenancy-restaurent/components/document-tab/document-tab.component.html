@@ -1,0 +1,136 @@
+<div class="mt-4">
+  <button
+    (click)="addDocumentPopupStatus = true"
+    class="btn btn-primary btn-fixed-height font-weight-bold px-2 px-lg-5 mr-3 _mlauto"
+  >
+    Add Document
+  </button>
+</div>
+
+<div class="row _wid100">
+  <div
+    *ngFor="let doc of documentList"
+    class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-xs-12 mt-2"
+  >
+    <div
+      class="_cardBackgroundColor p-5 _curPointer"
+      (click)="viewDocumentPopupStatus = true"
+    >
+      <img [src]="doc.imgPath" class="_wid100" />
+      <!-- asdfasdfadfasdf -->
+
+      <div>
+        <div class="font-weight-bold mt-1">Document Name :</div>
+        <div class="font-size-sm mt-1 ml-2">Report</div>
+        <div class="font-weight-bold mt-1">Document Type:</div>
+        <div class="black _textOverflow mt-1 font-size-sm ml-2">
+          business reports
+        </div>
+        <div class="font-weight-bold mt-1">Upload by :</div>
+        <div class="font-size-sm mt-1 ml-2">Govi</div>
+        <div class="font-weight-bold mt-1">Upload on:</div>
+        <div class="black _textOverflow mt-1 font-size-sm ml-2">18/06/2021</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Add Document Model -->
+<p-dialog
+  [showHeader]="true"
+  header="Add Document"
+  modal="true"
+  position="right"
+  [(visible)]="addDocumentPopupStatus"
+  class="_smallSizeModal _fileUploadBtn"
+>
+  <!-- <div
+    class="offcanvas-close mt-2 pr-5"
+    style="position: absolute; right: 0"
+    (click)="addDocumentPopupStatus = false"
+  >
+    <a
+      (click)="addDocumentPopupStatus = false"
+      class="btn btn-xs btn-icon btn-light btn-hover-primary"
+      id="kt_quick_panel_close"
+    >
+      <i class="ki ki-close icon-xs text-muted"></i>
+    </a>
+  </div> -->
+
+  <div class="row _wid100">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-xs-12 mt-4">
+      <div class="form-group">
+        <label>Name</label>
+        <input type="text" class="form-control" placeholder="Name" />
+        <span class="form-text text-muted">Please enter the name.</span>
+      </div>
+
+      <div class="form-group">
+        <label>File Type</label>
+        <select name="country" class="form-control">
+          <option value="AF">Afghanistan</option>
+          <option value="AX">Åland Islands</option>
+        </select>
+        <span class="form-text text-muted">Please enter file type.</span>
+      </div>
+
+      <p-fileUpload
+        name="demo[]"
+        url="./upload.php"
+        multiple="multiple"
+        accept="image/*"
+        maxFileSize="1000000"
+        [showUploadButton]="false"
+        [showCancelButton]="false"
+      >
+        <ng-template pTemplate="content">
+          <ul *ngIf="uploadedFiles.length">
+            <li *ngFor="let file of uploadedFiles">
+              {{ file.name }} - {{ file.size }} bytes
+            </li>
+          </ul>
+        </ng-template>
+      </p-fileUpload>
+    </div>
+  </div>
+
+  <div>
+    <button
+      class="btn btn-primary btn-fixed-height font-weight-bold px-2 px-lg-5 mt-4 mr-2 _mlauto"
+    >
+      Upload
+    </button>
+  </div>
+</p-dialog>
+
+<!-- View document Model -->
+<p-dialog
+  [showHeader]="true"
+  header="View Document"
+  modal="true"
+  position="right"
+  [(visible)]="viewDocumentPopupStatus"
+  class="_addDocumentModal"
+  [style]="{ width: '30vw', margin: '0px' }"
+>
+  <div class="row">
+    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+      <div class="font-weight-bold mt-1">Document Name :</div>
+      <div class="font-size-base mt-1 ml-2">Report</div>
+      <div class="font-weight-bold mt-1">Document Type:</div>
+      <div class="black _textOverflow mt-1 font-size-base ml-2">
+        business reports
+      </div>
+    </div>
+
+    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+      <div class="font-weight-bold mt-1">Upload by :</div>
+      <div class="font-size-base mt-1 ml-2">Govi</div>
+      <div class="font-weight-bold mt-1">Upload on:</div>
+      <div class="black _textOverflow mt-1 font-size-base ml-2">18/06/2021</div>
+    </div>
+  </div>
+
+  <img src="assets/media/books/4.png" class="_wid100 mt-4" />
+</p-dialog>

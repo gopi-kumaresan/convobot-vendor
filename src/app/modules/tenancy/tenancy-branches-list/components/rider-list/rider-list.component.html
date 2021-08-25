@@ -1,0 +1,75 @@
+<!-- <div class="card card-custom card-stretch">
+  <div class="card-body pt-4 _noFilterCardheigth"> -->
+
+<div class="row _wid100">
+  <div class="col-xl-4 col-lg-12 _noPaddding">
+    <div class="input-icon h-40px">
+      <input
+        type="text"
+        class="form-control form-control-lg form-control-solid h-40px mt-3"
+        placeholder="Search..."
+        id="generalSearch"
+      />
+      <span>
+        <span
+          [inlineSVG]="'./assets/media/svg/icons/General/Search.svg'"
+          cacheSVG="true"
+          class="svg-icon svg-icon-lg"
+        ></span>
+      </span>
+    </div>
+  </div>
+  <div class="col-xl-8 col-lg-12 _textEnd _noPaddding">
+    <button class="btn btn-primary mr-2 mt-2">Active</button>
+    <button class="btn _filterInactiveButton mr-2 mt-2">In Active</button>
+  </div>
+</div>
+
+<div
+  class="row mt-3 p-1 _wid100 _cardBackgroundColor _curPointer"
+  *ngFor="let rider of riderListData; let i = index"
+>
+  <div class="col-xl-4 p-2">
+    <div class="font-weight-bold mt-1">Rider Name :</div>
+    <div class="text-primary font-size-sm font-weight-bold mt-1 ml-2">
+      {{ rider.riderName }}
+    </div>
+    <div class="font-weight-bold mt-1">Email :</div>
+    <div class="black _textOverflow mt-1 font-size-sm ml-2">
+      {{ rider.email }}
+    </div>
+  </div>
+
+  <div class="col-xl-4 p-2">
+    <div class="font-weight-bold mt-1">MobileNumber :</div>
+    <div class="font-size-sm mt-1 ml-2">
+      {{ rider.mobileNumber }}
+    </div>
+    <div class="font-weight-bold mt-1">City :</div>
+    <div class="black _textOverflow mt-1 font-size-sm ml-2">
+      {{ rider.cityName }}
+    </div>
+  </div>
+
+  <div class="col-xl-4 p-2">
+    <div class="font-weight-bold mt-1">Online Status :</div>
+    <div class="font-size-sm mt-1 ml-2">
+      {{ rider.onlineStatus }}
+    </div>
+
+    <div class="mr-2 mt-2">
+      <p-toggleButton
+        onLabel="Assign"
+        offLabel="Unassign"
+        [style]="{ width: '10em' }"
+      ></p-toggleButton>
+    </div>
+
+    <!-- <div class="font-weight-bold mt-1">Status :</div>
+            <div class="black _textOverflow mt-1 font-size-sm ml-2">
+              {{ rider.status }}
+            </div> -->
+  </div>
+</div>
+<!-- </div>
+</div> -->

@@ -1,0 +1,159 @@
+<div class="mb-4 _searchFilterDiv card card-custom">
+  <div class="row">
+    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-1">
+      <div class="input-icon h-40px">
+        <input
+          type="text"
+          class="form-control form-control-lg form-control-solid h-40px _searchInput"
+          placeholder="Search..."
+          id="generalSearch"
+        />
+        <span>
+          <span
+            [inlineSVG]="'./assets/media/svg/icons/General/Search.svg'"
+            cacheSVG="true"
+            class="svg-icon svg-icon-lg"
+          ></span>
+        </span>
+      </div>
+    </div>
+    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-1">
+      <div class="_filterLabel">
+        <div class="mt-4 font-weight-bold">Sort By</div>
+        <button
+          class="btn btn-primary btn-fixed-height font-weight-bold px-2 px-lg-5 mr-2 _filterButton"
+        >
+          Order
+        </button>
+
+        <button
+          class="btn _filterInactiveButton btn-fixed-height font-weight-bold px-2 px-lg-5 mr-2 _filterButton"
+        >
+          &nbsp;&nbsp;New&nbsp;&nbsp;
+        </button>
+        <button
+          class="btn _filterInactiveButton btn-fixed-height font-weight-bold px-2 px-lg-5 mr-2 _filterButton"
+        >
+          A - Z
+        </button>
+        <button
+          class="btn _filterInactiveButton btn-fixed-height font-weight-bold px-2 px-lg-5 mr-2 _filterButton"
+        >
+          Z - A
+        </button>
+        <button
+          class="btn _filterInactiveButton btn-fixed-height font-weight-bold px-2 px-lg-5 mr-2 _filterButton"
+        >
+          Active
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card card-custom">
+  <!--begin::Body-->
+  <div class="p-5 _overflowAuto" [style.height.px]="totalHeight - 170">
+    <div
+      class="row _wid100 _mauto mb-4 p-1 _cardBackgroundColor"
+      *ngFor="let order of orderListData; let i = index"
+    >
+      <div class="col-xl-3 p-2">
+        <div class="black mt-1">{{ order.name }}</div>
+        <div class="black _textOverflow mt-1">
+          {{ order.address }}
+        </div>
+        <div class="black mt-1">{{ order.phonenumber }}</div>
+
+        <div class="text-muted mt-1 font-size-xs">
+          Since : {{ order.initialSince }}
+        </div>
+        <div class="text-muted mt-1 font-size-xs">
+          Last Since : {{ order.lastSince }}
+        </div>
+      </div>
+
+      <div class="col-xl-3 p-2">
+        <div class="font-weight-bold mt-1">Order</div>
+        <div class="black mt-1">Processed - {{ order.Processed }}</div>
+        <div class="black mt-1">Cancelled - {{ order.Cancelled }}</div>
+        <div class="black mt-1">Total Value - {{ order.TotalValue }}</div>
+        <div class="black mt-1">Refund -{{ order.Refund }}</div>
+      </div>
+
+      <div class="col-xl-3 p-2">
+        <div class="font-weight-bold mt-1">Channels</div>
+        <div class="mt-1">
+          <img class="m-1" src="assets/media/svg/social-icons/google.svg" />
+          <img class="m-1" src="assets/media/svg/social-icons/google.svg" />
+        </div>
+
+        <div class="mt-5">
+          <mat-radio-group [(ngModel)]="activeButton">
+            <mat-radio-button value="2">Active</mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </div>
+
+      <div class="col-xl-3 p-2 _textEnd _margintopAuto">
+        <!-- <div class="row"> -->
+        <!-- <div
+        class="col-xl-12 col-lg-12 mb-4"
+        style="text-align: -webkit-center"
+      >
+        <button
+          style="width: 100%"
+          class="btn btn-primary font-weight-bold px-2 px-lg-5 mr-2"
+        >
+          Initiate Conversation
+        </button>
+      </div> -->
+        <!-- <div
+            class="col-xl-12 col-lg-12 mb-4"
+           
+          > -->
+        <button
+          routerLink="/customer-details"
+          class="btn _filterInactiveButton font-weight-bold px-2 px-lg-5 mr-2"
+        >
+          Know more
+        </button>
+        <!-- </div> -->
+        <!-- </div> -->
+
+        <!-- <button
+    class="btn btn-primary btn-fixed-height font-weight-bold px-2 px-lg-5 mr-2 _filterButton"
+  >
+    Initiate Conversation
+  </button>
+  <button
+    class="btn btn-primary btn-fixed-height font-weight-bold px-2 px-lg-5 mr-2 _filterButton"
+  >
+    Know more
+  </button> -->
+      </div>
+
+      <!-- <div class="list-item hoverable p-1 p-lg-3">
+  <div class="d-flex align-items-center">
+    <div class="d-flex flex-column flex-grow-1 mr-2">
+      <span class="text-primary font-weight-bold mb-1">{{
+        order.name
+      }}</span>
+      <span class="mb-1 _address"> {{ order.address }}</span>
+
+      <span class="text-primary font-weight-bold mb-1">{{
+        order.orderNumber
+      }}</span>
+      <span class="mb-1 text-muted">{{ order.itemPrice }}</span>
+
+      <span class="text-muted">{{ order.timestamp }}</span>
+    </div>
+  </div>
+</div> -->
+    </div>
+
+    <!--end::Nav-->
+    <!-- </div> -->
+    <!--end::Body-->
+  </div>
+</div>

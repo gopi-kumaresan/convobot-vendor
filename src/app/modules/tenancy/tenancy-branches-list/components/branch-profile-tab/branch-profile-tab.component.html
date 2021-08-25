@@ -1,0 +1,309 @@
+<div class="_textEnd mt-3">
+  <div>
+    <img
+      class="_editButtonStyle"
+      src="/assets/media/convobot-icon/edit-icon.svg"
+    />
+    <p-toggleButton
+      class="mr-2"
+      [(ngModel)]="editMode"
+      onLabel="Edit Mode Off"
+      offLabel="Edit Mode On"
+      onIcon="null"
+      offIcon="null"
+      [style]="{ width: '10em' }"
+    ></p-toggleButton>
+  </div>
+  <!-- <img
+    style="width: 18px; position: relative; left: 30px; z-index: 20"
+    src="/assets/media/convobot-icon/edit-icon.svg"
+  /> -->
+  <!-- <p-toggleButton
+    class="mr-2"
+    [(ngModel)]="editMode"
+    onLabel="Edit Mode Off"
+    offLabel="Edit Mode On"
+    onIcon=""
+    offIcon=""
+    [style]="{ width: '10em' }"
+  ></p-toggleButton> -->
+</div>
+
+<div class="row _wid100">
+  <div class="col-xl-6 col-lg-6 col-md-12 col-xs-12 mt-4">
+    <div class="form-group">
+      <label>Restaurant</label>
+      <div *ngIf="editMode">
+        <input
+          type="text"
+          class="form-control"
+          name="address1"
+          placeholder="Restaurant Name"
+        />
+        <span class="form-text text-muted">Please enter restaurant name.</span>
+      </div>
+      <div class="font-size-lg font-weight-bold ml-2" *ngIf="!editMode">
+        Jasmis
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Branch Name </label>
+      <div *ngIf="editMode">
+        <input
+          type="text"
+          class="form-control"
+          name="address1"
+          placeholder="Branch Name"
+        />
+        <span class="form-text text-muted">Please enter Branch Name.</span>
+      </div>
+      <div class="font-size-lg font-weight-bold ml-2" *ngIf="!editMode">
+        Jasmi's Saar
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Branch Address</label>
+      <div *ngIf="editMode">
+        <textarea
+          name="description"
+          placeholder="Main Branch Address"
+          class="form-control"
+        ></textarea>
+        <span class="form-text text-muted"
+          >Please enter main branch address.</span
+        >
+      </div>
+
+      <div
+        class="font-size-lg font-weight-bold ml-2 _textJustify"
+        *ngIf="!editMode"
+      >
+        Bldg. 1023, Rd. 3621, Area 436, Seef District P.O Box 2415, Manama,
+        Kingdom of Bahrain
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Primary EMail</label>
+      <div *ngIf="editMode">
+        <input
+          type="text"
+          class="form-control"
+          name="address1"
+          placeholder="Primary Email"
+        />
+        <span class="form-text text-muted">Please enter Primary EMail.</span>
+      </div>
+
+      <div class="font-size-lg font-weight-bold ml-2" *ngIf="!editMode">
+        info@jasmis.com
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Primary Phone Number</label>
+      <div *ngIf="editMode">
+        <input
+          type="text"
+          class="form-control"
+          name="address1"
+          placeholder="Primary Phone Number"
+        />
+        <span class="form-text text-muted"
+          >Please enter Primary Phone Number.</span
+        >
+      </div>
+
+      <div class="font-size-lg font-weight-bold ml-2" *ngIf="!editMode">
+        17588787
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Secondary EMail</label>
+      <div *ngIf="editMode">
+        <input
+          type="text"
+          class="form-control"
+          name="address1"
+          placeholder="Secondary Email"
+        />
+        <span class="form-text text-muted">Please enter Secondary EMail.</span>
+      </div>
+
+      <div class="font-size-lg font-weight-bold ml-2" *ngIf="!editMode">
+        info@jasmis.com
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Secondary Phone Number</label>
+      <div *ngIf="editMode">
+        <input
+          type="text"
+          class="form-control"
+          name="address1"
+          placeholder="Secondary Phone Number"
+        />
+        <span class="form-text text-muted"
+          >Please enter Secondary Phone Number.</span
+        >
+      </div>
+
+      <div class="font-size-lg font-weight-bold ml-2" *ngIf="!editMode">
+        17588787
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Description</label>
+      <div *ngIf="editMode">
+        <textarea
+          name="description"
+          placeholder="Description"
+          class="form-control"
+        ></textarea>
+        <span class="form-text text-muted">Please enter Description.</span>
+      </div>
+
+      <div
+        class="font-size-lg font-weight-bold ml-2 _textJustify"
+        *ngIf="!editMode"
+      >
+        Our meals are known to leave an impression on anyone and everyone. The
+        secret lies in the high-quality, impressionable ingredients we use. This
+        is why each of our burgers are someone's lifelong favorite.
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xl-6 col-lg-6 col-md-12 col-xs-12 mt-4">
+    <div class="form-group">
+      <label>Country</label>
+      <div *ngIf="editMode">
+        <input
+          type="text"
+          class="form-control"
+          name="address1"
+          placeholder="Countries"
+        />
+        <span class="form-text text-muted">Please enter the Countries.</span>
+      </div>
+
+      <div class="font-size-lg font-weight-bold ml-2" *ngIf="!editMode">
+        Bahrain
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>City</label>
+      <div *ngIf="editMode">
+        <input
+          type="text"
+          class="form-control"
+          name="address1"
+          placeholder="City"
+        />
+        <span class="form-text text-muted">Please enter City.</span>
+      </div>
+
+      <div class="font-size-lg font-weight-bold ml-2" *ngIf="!editMode">
+        Manama
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Is Main Branch</label>
+      <div *ngIf="editMode">
+        <input
+          type="text"
+          class="form-control"
+          name="address1"
+          placeholder="Is Main Branch"
+        />
+        <span class="form-text text-muted">Please enter Is Main Branch.</span>
+      </div>
+
+      <div class="font-size-lg font-weight-bold ml-2" *ngIf="!editMode">
+        Manama
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Currency</label>
+      <div *ngIf="editMode">
+        <input type="text" class="form-control" placeholder="Currency" />
+        <span class="form-text text-muted">Please enter the curency.</span>
+      </div>
+      <div class="font-size-lg font-weight-bold ml-2" *ngIf="!editMode">
+        dinar
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>LatLong</label>
+      <div *ngIf="editMode">
+        <input
+          type="text"
+          class="form-control"
+          name="address1"
+          placeholder="LatLong"
+        />
+        <span class="form-text text-muted">Please enter LatLong.</span>
+      </div>
+
+      <div class="font-size-lg font-weight-bold ml-2" *ngIf="!editMode">
+        26.201000, 50.606998
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Taxation </label>
+      <div *ngIf="editMode">
+        <input
+          type="text"
+          class="form-control"
+          name="address1"
+          placeholder="Taxation"
+        />
+        <span class="form-text text-muted">Please enter Taxation.</span>
+      </div>
+
+      <div class="font-size-lg font-weight-bold ml-2" *ngIf="!editMode">-</div>
+    </div>
+
+    <div class="form-group">
+      <label>Timezone</label>
+      <div *ngIf="editMode">
+        <input type="text" class="form-control" placeholder="Timezone" />
+        <span class="form-text text-muted">Please select the timezone.</span>
+      </div>
+      <div class="font-size-lg font-weight-bold ml-2" *ngIf="!editMode">
+        AST
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Payment Options</label>
+      <div *ngIf="editMode">
+        <input type="text" class="form-control" placeholder="Payment Options" />
+        <span class="form-text text-muted"
+          >Please enter select payment option.</span
+        >
+      </div>
+      <div class="font-size-lg font-weight-bold ml-2" *ngIf="!editMode">
+        Debit Card,Credit Card,Cash On Delivery,C Pocket,C Pocket & Online
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="editMode">
+  <button
+    class="btn btn-primary btn-fixed-height font-weight-bold px-2 px-lg-5 mr-2 _mlauto"
+  >
+    Save
+  </button>
+</div>

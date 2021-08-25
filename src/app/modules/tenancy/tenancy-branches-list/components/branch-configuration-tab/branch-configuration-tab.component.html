@@ -1,0 +1,203 @@
+<div class="_textEnd mt-3">
+  <div>
+    <img
+      class="_editButtonStyle"
+      src="/assets/media/convobot-icon/edit-icon.svg"
+    />
+    <p-toggleButton
+      class="mr-2"
+      [(ngModel)]="editMode"
+      onLabel="Edit Mode Off"
+      offLabel="Edit Mode On"
+      onIcon="null"
+      offIcon="null"
+      [style]="{ width: '10em' }"
+    ></p-toggleButton>
+  </div>
+  <!-- <img
+    style="width: 18px; position: relative; left: 30px; z-index: 20"
+    src="/assets/media/convobot-icon/edit-icon.svg"
+  /> -->
+  <!-- <p-toggleButton
+    class="mr-2"
+    [(ngModel)]="editMode"
+    onLabel="Edit Mode Off"
+    offLabel="Edit Mode On"
+    onIcon=""
+    offIcon=""
+    [style]="{ width: '10em' }"
+  ></p-toggleButton> -->
+</div>
+
+<div class="row _wid100">
+  <div class="col-xl-6 col-lg-6 col-md-12 col-xs-12 mt-4">
+    <div class="form-group">
+      <label>Timeslot</label>
+      <div *ngIf="editMode">
+        <input type="text" class="form-control" placeholder="Timeslot" />
+        <span class="form-text text-muted">Please enter the Timeslot.</span>
+      </div>
+      <div class="font-size-lg font-weight-bold ml-2" *ngIf="!editMode">-</div>
+    </div>
+
+    <div class="form-group">
+      <label>Cost for 2</label>
+      <div *ngIf="editMode">
+        <input type="text" class="form-control" placeholder="Cost for 2" />
+        <span class="form-text text-muted">Please enter the cost for 2.</span>
+      </div>
+      <div class="font-size-lg font-weight-bold ml-2" *ngIf="!editMode">2</div>
+    </div>
+
+    <div class="form-group">
+      <label>Minimum Order Value</label>
+      <div *ngIf="editMode">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Minimum Order Value"
+        />
+        <span class="form-text text-muted"
+          >Please enter minimum order value.</span
+        >
+      </div>
+      <div class="font-size-lg font-weight-bold ml-2" *ngIf="!editMode">10</div>
+    </div>
+
+    <div class="form-group">
+      <label>Delivery Charge</label>
+      <div *ngIf="editMode">
+        <input type="text" class="form-control" placeholder="Delivery Charge" />
+        <span class="form-text text-muted"
+          >Please enter the delivery charge.</span
+        >
+      </div>
+      <div class="font-size-lg font-weight-bold ml-2" *ngIf="!editMode">10</div>
+    </div>
+
+    <div class="form-group">
+      <label>Delivery Charge Type</label>
+      <div *ngIf="editMode">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Delivery Charge Type"
+        />
+        <span class="form-text text-muted"
+          >Please select delivery charge type.</span
+        >
+      </div>
+      <div class="font-size-lg font-weight-bold ml-2" *ngIf="!editMode">
+        Variable
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Commission Type</label>
+      <div *ngIf="editMode">
+        <input type="text" class="form-control" placeholder="Commission Type" />
+        <span class="form-text text-muted"
+          >Please select the commission type.</span
+        >
+      </div>
+      <div class="font-size-lg font-weight-bold ml-2" *ngIf="!editMode">
+        Amount
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Commission Value</label>
+      <div *ngIf="editMode">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Commission Value"
+        />
+        <span class="form-text text-muted">Please enter commision value.</span>
+      </div>
+      <div class="font-size-lg font-weight-bold ml-2" *ngIf="!editMode">
+        0.002
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xl-6 col-lg-6 col-md-12 col-xs-12 mt-4">
+    <div class="form-group">
+      <label>Preparation Time</label>
+      <div *ngIf="editMode">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Preparation Time"
+        />
+        <span class="form-text text-muted"
+          >Please enter select preparation time.</span
+        >
+      </div>
+      <div class="font-size-lg font-weight-bold ml-2" *ngIf="!editMode">10</div>
+    </div>
+
+    <div class="form-group">
+      <label>Pickup Time</label>
+      <div *ngIf="editMode">
+        <input type="text" class="form-control" placeholder="Pickup Time" />
+        <span class="form-text text-muted">Please enter the pickup time.</span>
+      </div>
+      <div class="font-size-lg font-weight-bold ml-2" *ngIf="!editMode">15</div>
+    </div>
+
+    <div class="form-group">
+      <label>Delivery Time</label>
+      <div *ngIf="editMode">
+        <input type="text" class="form-control" placeholder="Delivery Time" />
+        <span class="form-text text-muted"
+          >Please select the delivery time.</span
+        >
+      </div>
+      <div class="font-size-lg font-weight-bold ml-2" *ngIf="!editMode">45</div>
+    </div>
+
+    <div class="form-group">
+      <label>Restaurant Type</label>
+      <div *ngIf="editMode">
+        <input type="text" class="form-control" placeholder="Restaurant Type" />
+        <span class="form-text text-muted"
+          >Please select the restaurant type.</span
+        >
+      </div>
+      <div class="font-size-lg font-weight-bold ml-2" *ngIf="!editMode">
+        Non Veg
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Order Type</label>
+      <div *ngIf="editMode">
+        <input type="text" class="form-control" placeholder="Order Type" />
+        <span class="form-text text-muted">Please select the order type.</span>
+      </div>
+      <div class="font-size-lg font-weight-bold ml-2" *ngIf="!editMode">
+        Delivery
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Status</label>
+      <div *ngIf="editMode">
+        <input type="text" class="form-control" placeholder="Status" />
+        <span class="form-text text-muted">Please select the status.</span>
+      </div>
+      <div class="font-size-lg font-weight-bold ml-2" *ngIf="!editMode">
+        Active
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="editMode">
+  <button
+    class="btn btn-primary btn-fixed-height font-weight-bold px-2 px-lg-5 mr-2 _mlauto"
+  >
+    Save
+  </button>
+</div>

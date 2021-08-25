@@ -1,0 +1,21 @@
+// ::ng-deep ._addDocumentModal .ui-dialog {
+//   max-height: 100%;
+// }
+
+::ng-deep ._fileUploadBtn .ui-button {
+  background-color: #ebebeb;
+  color: #000;
+  border: 1px solid #e1d9d9;
+}
+
+::ng-deep ._fileUploadBtn .ui-button:hover {
+  background-color: #ebebeb;
+  color: #000;
+  border: 1px solid #e1d9d9;
+}
+
+// ::ng-deep ._addDocumentModal .ui-dialog .ui-dialog-content {
+//   overflow: hidden !important;
+// }
+
+

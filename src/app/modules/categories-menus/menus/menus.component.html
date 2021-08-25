@@ -1,0 +1,145 @@
+<div class="row">
+  <div class="col-xl-2 mb-4">
+    <div
+      class="card card-custom _overflowAuto _wid100"
+      [style.height.px]="totalHeight - 104"
+    >
+      <div class="row _wid100">
+        <div class="col-12">
+          <h5 class="mt-9 mb-9">Categories</h5>
+        </div>
+
+        <!-- <div class="col-4 mt-9 _expandIcon">
+          <img
+            (click)="expandCategories = !expandCategories"
+            [src]="
+              !expandCategories
+                ? './assets/media/convobot-icon/down-arrow.png'
+                : './assets/media/convobot-icon/up-arrow.png'
+            "
+          />
+        </div> -->
+      </div>
+
+      <!-- <div class="list list-hover" *ngIf="expandCategories">
+        <div
+          class="list-item hoverable p-2 p-lg-3"
+          [ngClass]="{ _activeRowWithBorder: i == 1 }"
+          *ngFor="let cate of CategoriesList; let i = index"
+        >
+          <div class="d-flex align-items-center">
+            <div class="d-flex flex-column flex-grow-1 mr-2">
+              <span class="mb-1 mt-1 font-weight-bold">{{ cate.name }} </span>
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+      <div class="list list-hover">
+        <div
+          class="list-item hoverable p-2 p-lg-3"
+          [ngClass]="{ _activeRowWithBorder: i == 1 }"
+          *ngFor="let cate of CategoriesList; let i = index"
+        >
+          <div class="d-flex align-items-center">
+            <div class="d-flex flex-column flex-grow-1 mr-2">
+              <span class="mb-1 mt-1 font-weight-bold">{{ cate.name }} </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xl-10">
+    <div class="row _searchFilterDiv card card-custom">
+      <div class="col-xl-12 col-lg-12">
+        <div class="input-icon h-40px">
+          <input
+            type="text"
+            class="form-control form-control-lg form-control-solid h-40px"
+            placeholder="Search..."
+            id="generalSearch"
+          />
+          <span>
+            <span
+              [inlineSVG]="'./assets/media/svg/icons/General/Search.svg'"
+              cacheSVG="true"
+              class="svg-icon svg-icon-lg"
+            ></span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-5">
+      <div
+        class="card card-custom _overflowAuto _wid100"
+        [style.height.px]="totalHeight - 180"
+      >
+        <div *ngFor="let subCate of subCategories">
+          <h5 style="margin: 16px 9px 16px 9px">{{ subCate.title }}</h5>
+          <div
+            style="border: 1px solid #ecf1f6; padding: 10px"
+            *ngFor="let priceData of subCate.datas"
+            [ngClass]="{ _bodyBackgroundColor: !priceData.status }"
+          >
+            <div class="row">
+              <div
+                class="col-xl-4 col-lg-12 pb-1 pt-1"
+                style="display: inherit"
+              >
+                <span
+                  style="padding-top: 5px; padding-right: 5px"
+                  [inlineSVG]="'./assets/media/svg/icons/General/setting.svg'"
+                  cacheSVG="true"
+                  class="svg-icon svg-icon-xl"
+                ></span>
+
+                <div>
+                  <span class="font-weight-bold mb-3">{{
+                    priceData.sub_categories_name
+                  }}</span
+                  ><br />
+                  <span class="text-muted">{{ priceData.price }}</span>
+                </div>
+              </div>
+
+              <div class="col-xl-4 col-lg-12 pb-1 pt-1">
+                <mat-slide-toggle
+                  [(ngModel)]="priceData.status"
+                ></mat-slide-toggle>
+              </div>
+              <div class="col-xl-4 col-lg-12 pb-1 pt-1 _textEndStart">
+                <a
+                  title="Edit product"
+                  class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3"
+                >
+                  <span
+                    [inlineSVG]="
+                      './assets/media/svg/icons/Communication/Write.svg'
+                    "
+                    cacheSVG="true"
+                    class="svg-icon svg-icon-md svg-icon-primary"
+                  >
+                  </span>
+                </a>
+                <a
+                  title="Delete product"
+                  class="btn btn-icon btn-light btn-hover-danger-light btn-sm"
+                >
+                  <span
+                    [inlineSVG]="'./assets/media/svg/icons/General/Trash.svg'"
+                    cacheSVG="true"
+                    class="svg-icon svg-icon-md svg-icon-danger-light"
+                  >
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
