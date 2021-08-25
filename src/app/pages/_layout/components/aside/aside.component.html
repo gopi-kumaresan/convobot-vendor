@@ -1,0 +1,618 @@
+<div class="aside-primary d-flex flex-column align-items-center flex-row-auto">
+  <!--begin::Primary-->
+
+  <!--begin::Logo-->
+  <!-- <div
+    class="aside-brand d-flex flex-column align-items-center flex-column-auto pt-7 pb-3"
+    id="kt_brand"
+    [ngClass]="brandClasses"
+  >
+ 
+    <a routerLink="/" class="brand-logo">
+      <img
+        alt="Logo"
+        src="./assets/media/logos/cn-logo.png"
+        class="max-h-30px"
+      />
+    </a>
+
+  </div> -->
+
+  <div
+    style="text-align: center; width: 100%; background: #454545"
+    class="text-primary font-weight-boldest font-size-h2 pt-5 pb-5"
+  >
+    CB360
+  </div>
+  <!--begin::Nav Wrapper-->
+  <div
+    style="width: 100%; padding: 0px; left: -6px"
+    class="aside-nav d-flex flex-column align-items-center flex-column-fluid py-5 scroll scroll-pull"
+  >
+    <!--begin::Nav-->
+    <!--begin::Nav-->
+    <ul
+      class="nav flex-column"
+      role="tablist"
+      style="text-align: center; width: 100%"
+    >
+      <!--begin::Item-->
+      <li
+        class="nav-item mb-2"
+        placement="right"
+        ngbTooltip="Orders"
+        container="body"
+        *ngIf="currentUrl[1] != 'setting'"
+        [ngClass]="{ _activeRowWithBorder: activeTabId === TABS[1] }"
+      >
+        <a
+          class="nav-link btn btn-icon btn-clean btn-lg"
+          data-toggle="tab"
+          [ngClass]="{ active: activeTabId === TABS[1] }"
+          (click)="setTab(TABS[1])"
+          data-target="#kt_aside_tab_1"
+          role="tab"
+          routerLink="/order"
+        >
+          <span
+            [inlineSVG]="'./assets/media/svg/icons/General/setting.svg'"
+            cacheSVG="true"
+            class="svg-icon svg-icon-xl"
+          ></span>
+          <span class="_iconText">Orders</span>
+        </a>
+      </li>
+      <!--end::Item-->
+
+      <!--begin::Item-->
+      <li
+        class="nav-item mb-2"
+        placement="right"
+        ngbTooltip="Menu"
+        container="body"
+        *ngIf="currentUrl[1] != 'setting'"
+        [ngClass]="{ _activeRowWithBorder: activeTabId === TABS[2] }"
+      >
+        <a
+          class="nav-link btn btn-icon btn-clean btn-lg"
+          data-toggle="tab"
+          [ngClass]="{ active: activeTabId === TABS[2] }"
+          (click)="setTab(TABS[2])"
+          data-target="#kt_aside_tab_2"
+          role="tab"
+          routerLink="/menu"
+        >
+          <span
+            [inlineSVG]="'./assets/media/svg/icons/Communication/Group.svg'"
+            cacheSVG="true"
+            class="svg-icon svg-icon-xl"
+          ></span>
+          <span class="_iconText">Menu</span>
+        </a>
+      </li>
+      <!--end::Item-->
+
+      <!--begin::Item-->
+      <li
+        class="nav-item mb-2"
+        placement="right"
+        ngbTooltip="Customers"
+        ngbTooltipClass="tooltip"
+        container="body"
+        *ngIf="currentUrl[1] != 'setting'"
+        [ngClass]="{ _activeRowWithBorder: activeTabId === TABS[3] }"
+      >
+        <a
+          class="nav-link btn btn-icon btn-clean btn-lg"
+          [ngClass]="{ active: activeTabId === TABS[3] }"
+          data-toggle="tab"
+          data-target="#kt_aside_tab_3"
+          role="tab"
+          routerLink="/customer-list"
+          (click)="setTab(TABS[3])"
+        >
+          <span
+            [inlineSVG]="'./assets/media/svg/icons/Media/Equalizer.svg'"
+            cacheSVG="true"
+            class="svg-icon svg-icon-xl"
+          ></span>
+          <span class="_iconText">Customers</span>
+        </a>
+      </li>
+      <!--end::Item-->
+      <!--begin::Item-->
+      <li
+        class="nav-item mb-2"
+        placement="right"
+        ngbTooltip="Riders"
+        ngbTooltipClass="tooltip"
+        container="body"
+        *ngIf="currentUrl[1] != 'setting'"
+        [ngClass]="{ _activeRowWithBorder: activeTabId === TABS[4] }"
+      >
+        <a
+          class="nav-link btn btn-icon btn-clean btn-lg"
+          [ngClass]="{ active: activeTabId === TABS[4] }"
+          data-toggle="tab"
+          data-target="#kt_aside_tab_4"
+          role="tab"
+        >
+          <span
+            [inlineSVG]="'./assets/media/svg/icons/General/Shield-check.svg'"
+            cacheSVG="true"
+            class="svg-icon svg-icon-xl"
+          ></span>
+          <span class="_iconText">Riders</span>
+        </a>
+      </li>
+      <!--end::Item-->
+      <!--begin::Item-->
+      <li
+        class="nav-item mb-2"
+        placement="right"
+        ngbTooltip="Dashboard"
+        ngbTooltipClass="tooltip"
+        container="body"
+        *ngIf="currentUrl[1] != 'setting'"
+      >
+        <a
+          class="nav-link btn btn-icon btn-clean btn-lg"
+          data-toggle="tab"
+          data-target="#kt_aside_tab_5"
+          [ngClass]="{ active: activeTabId === TABS[5] }"
+          role="tab"
+        >
+          <span
+            [inlineSVG]="'./assets/media/svg/icons/Home/Library.svg'"
+            cacheSVG="true"
+            class="svg-icon svg-icon-xl"
+          ></span>
+          <span class="_iconText">Dashboard</span>
+        </a>
+      </li>
+      <!--end::Item-->
+
+      <!--begin::Item-->
+      <li
+        class="nav-item mb-2"
+        placement="right"
+        ngbTooltip="Settings"
+        container="body"
+        *ngIf="currentUrl[1] != 'setting'"
+      >
+        <a
+          class="nav-link btn btn-icon btn-clean btn-lg"
+          data-toggle="tab"
+          role="tab"
+          routerLink="setting/tenancy/tenancy-restaurent"
+        >
+          <span
+            [inlineSVG]="'./assets/media/svg/icons/General/setting.svg'"
+            cacheSVG="true"
+            class="svg-icon svg-icon-xl"
+          ></span>
+          <span class="_iconText">Settings</span>
+        </a>
+      </li>
+      <!--end::Item-->
+
+      <!--begin::Item-->
+      <li
+        class="nav-item mb-2"
+        placement="right"
+        ngbTooltip="Tenancy"
+        container="body"
+        *ngIf="currentUrl[1] == 'setting'"
+        [ngClass]="{ _activeRowWithBorder: activeTabId === TABS[6] }"
+      >
+        <a
+          class="nav-link btn btn-icon btn-clean btn-lg"
+          data-toggle="tab"
+          [ngClass]="{ active: activeTabId === TABS[6] }"
+          (click)="setTab(TABS[6])"
+          data-target="#kt_aside_tab_6"
+          role="tab"
+          routerLink="/setting/tenancy/tenancy-restaurent"
+        >
+          <span
+            [inlineSVG]="'./assets/media/svg/icons/General/Attachment1.svg'"
+            cacheSVG="true"
+            class="svg-icon svg-icon-xl"
+          ></span>
+          <span class="_iconText">Tenancy</span>
+        </a>
+      </li>
+      <!--end::Item-->
+
+      <!--begin::Item-->
+      <li
+        class="nav-item mb-2"
+        placement="right"
+        ngbTooltip="Channels"
+        container="body"
+        *ngIf="currentUrl[1] == 'setting'"
+      >
+        <a
+          class="nav-link btn btn-icon btn-clean btn-lg"
+          data-toggle="tab"
+          [ngClass]="{ active: activeTabId === TABS[7] }"
+          (click)="setTab(TABS[7])"
+          data-target="#kt_aside_tab_7"
+          role="tab"
+          routerLink="setting/tenancy"
+        >
+          <span
+            [inlineSVG]="'./assets/media/svg/icons/General/Attachment2.svg'"
+            cacheSVG="true"
+            class="svg-icon svg-icon-xl"
+          ></span>
+          <span class="_iconText">Channels</span>
+        </a>
+      </li>
+      <!--end::Item-->
+
+      <!--begin::Item-->
+      <li
+        class="nav-item mb-2"
+        placement="right"
+        ngbTooltip="ChatBot"
+        container="body"
+        *ngIf="currentUrl[1] == 'setting'"
+      >
+        <a
+          class="nav-link btn btn-icon btn-clean btn-lg"
+          data-toggle="tab"
+          [ngClass]="{ active: activeTabId === TABS[8] }"
+          (click)="setTab(TABS[8])"
+          data-target="#kt_aside_tab_8"
+          role="tab"
+          routerLink="setting/tenancy"
+        >
+          <span
+            [inlineSVG]="'./assets/media/svg/icons/General/Binocular.svg'"
+            cacheSVG="true"
+            class="svg-icon svg-icon-xl"
+          ></span>
+          <span class="_iconText">ChatBot</span>
+        </a>
+      </li>
+      <!--end::Item-->
+
+      <!--begin::Item-->
+      <li
+        class="nav-item mb-2"
+        placement="right"
+        ngbTooltip="FODS"
+        container="body"
+        *ngIf="currentUrl[1] == 'setting'"
+        [ngClass]="{ _activeRowWithBorder: activeTabId === TABS[9] }"
+      >
+        <a
+          class="nav-link btn btn-icon btn-clean btn-lg"
+          data-toggle="tab"
+          [ngClass]="{ active: activeTabId === TABS[9] }"
+          (click)="setTab(TABS[9])"
+          data-target="#kt_aside_tab_9"
+          role="tab"
+          routerLink="/setting/fods/menu"
+        >
+          <span
+            [inlineSVG]="'./assets/media/svg/icons/General/Bookmark.svg'"
+            cacheSVG="true"
+            class="svg-icon svg-icon-xl"
+          ></span>
+          <span class="_iconText">FODS</span>
+        </a>
+      </li>
+      <!--end::Item-->
+
+      <!--begin::Item-->
+      <li
+        class="nav-item mb-2"
+        placement="right"
+        ngbTooltip="Loyalty"
+        container="body"
+        *ngIf="currentUrl[1] == 'setting'"
+      >
+        <a
+          class="nav-link btn btn-icon btn-clean btn-lg"
+          data-toggle="tab"
+          [ngClass]="{ active: activeTabId === TABS[10] }"
+          (click)="setTab(TABS[10])"
+          data-target="#kt_aside_tab_10"
+          role="tab"
+          routerLink="setting/tenancy"
+        >
+          <span
+            [inlineSVG]="'./assets/media/svg/icons/General/Dislike.svg'"
+            cacheSVG="true"
+            class="svg-icon svg-icon-xl"
+          ></span>
+          <span class="_iconText">Loyalty</span>
+        </a>
+      </li>
+      <!--end::Item-->
+
+      <!--begin::Item-->
+      <li
+        class="nav-item mb-2"
+        placement="right"
+        ngbTooltip="Coupons"
+        container="body"
+        *ngIf="currentUrl[1] == 'setting'"
+      >
+        <a
+          class="nav-link btn btn-icon btn-clean btn-lg"
+          data-toggle="tab"
+          [ngClass]="{ active: activeTabId === TABS[11] }"
+          (click)="setTab(TABS[11])"
+          data-target="#kt_aside_tab_11"
+          role="tab"
+          routerLink="setting/tenancy"
+        >
+          <span
+            [inlineSVG]="'./assets/media/svg/icons/General/Half-star.svg'"
+            cacheSVG="true"
+            class="svg-icon svg-icon-xl"
+          ></span>
+          <span class="_iconText">Coupons</span>
+        </a>
+      </li>
+      <!--end::Item-->
+
+      <!--begin::Item-->
+      <li
+        class="nav-item mb-2"
+        placement="right"
+        ngbTooltip="Referals"
+        container="body"
+        *ngIf="currentUrl[1] == 'setting'"
+      >
+        <a
+          class="nav-link btn btn-icon btn-clean btn-lg"
+          data-toggle="tab"
+          [ngClass]="{ active: activeTabId === TABS[12] }"
+          (click)="setTab(TABS[12])"
+          data-target="#kt_aside_tab_12"
+          role="tab"
+          routerLink="setting/tenancy"
+        >
+          <span
+            [inlineSVG]="'./assets/media/svg/icons/General/Notification2.svg'"
+            cacheSVG="true"
+            class="svg-icon svg-icon-xl"
+          ></span>
+          <span class="_iconText">Referals</span>
+        </a>
+      </li>
+
+      <li
+        class="nav-item mb-2"
+        placement="right"
+        ngbTooltip="Back"
+        container="body"
+        *ngIf="currentUrl[1] == 'setting'"
+        routerLink="/order"
+      >
+        <a class="nav-link btn btn-icon btn-clean btn-lg" role="tab">
+          <span
+            [inlineSVG]="'./assets/media/svg/icons/Navigation/Arrow-left.svg'"
+            cacheSVG="true"
+            class="svg-icon svg-icon-xl"
+          ></span>
+          <span class="_iconText">Back</span>
+        </a>
+      </li>
+
+      <!-- <img
+        routerLink="/order"
+        *ngIf="currentUrl[1] == 'setting'"
+        src="./assets/media/svg/icons/Navigation/Arrow-left.svg "
+      /> -->
+      <!--end::Item-->
+
+      <!-- ---------------------------------------------theme code ------------------------------------------ -->
+      <!--begin::Item-->
+      <!-- <li
+        class="nav-item mb-2"
+        placement="right"
+        ngbTooltip="Latest project"
+        container="body"
+      >
+        <a
+          class="nav-link btn btn-icon btn-clean btn-lg"
+          data-toggle="tab"
+          [ngClass]="{ active: activeTabId === TABS[1] }"
+          (click)="setTab(TABS[1])"
+          data-target="#kt_aside_tab_1"
+          role="tab"
+        >
+          <span
+            [inlineSVG]="'./assets/media/svg/icons/General/setting.svg'"
+            cacheSVG="true"
+            class="svg-icon svg-icon-xl"
+          ></span>
+          <span class="_iconText">Orders</span>
+        </a>
+      </li> -->
+      <!--end::Item-->
+      <!--begin::Item-->
+      <!-- <li
+        class="nav-item mb-3"
+        placement="right"
+        ngbTooltip="Metronic Features"
+        container="body"
+      >
+        <a
+          class="nav-link btn btn-icon btn-clean btn-lg"
+          [ngClass]="{ active: activeTabId === TABS[2] }"
+          (click)="setTab(TABS[2])"
+          data-toggle="tab"
+          data-target="#kt_aside_tab_2"
+          role="tab"
+        >
+          <span
+            [inlineSVG]="'./assets/media/svg/icons/Communication/Group.svg'"
+            cacheSVG="true"
+            class="svg-icon svg-icon-xl"
+          ></span>
+          <span class="_iconText">Menu</span>
+        </a>
+      </li> -->
+      <!--end::Item-->
+      <!--begin::Item-->
+      <!-- <li
+        class="nav-item mb-3"
+        placement="right"
+        ngbTooltip="Latest Reports"
+        ngbTooltipClass="tooltip"
+        container="body"
+      >
+        <a
+          class="nav-link btn btn-icon btn-clean btn-lg"
+          [ngClass]="{ active: activeTabId === TABS[3] }"
+          data-toggle="tab"
+          data-target="#kt_aside_tab_3"
+          role="tab"
+        >
+          <span
+            [inlineSVG]="'./assets/media/svg/icons/Media/Equalizer.svg'"
+            cacheSVG="true"
+            class="svg-icon svg-icon-xl"
+          ></span>
+          <span class="_iconText">Customers</span>
+        </a>
+      </li> -->
+      <!--end::Item-->
+      <!--begin::Item-->
+      <!-- <li
+        class="nav-item mb-3"
+        placement="right"
+        ngbTooltip="Latest Reports"
+        ngbTooltipClass="tooltip"
+        container="body"
+      >
+        <a
+          class="nav-link btn btn-icon btn-clean btn-lg"
+          [ngClass]="{ active: activeTabId === TABS[4] }"
+          data-toggle="tab"
+          data-target="#kt_aside_tab_4"
+          role="tab"
+        >
+          <span
+            [inlineSVG]="'./assets/media/svg/icons/General/Shield-check.svg'"
+            cacheSVG="true"
+            class="svg-icon svg-icon-xl"
+          ></span>
+          <span class="_iconText">Riders</span>
+        </a>
+      </li> -->
+      <!--end::Item-->
+      <!--begin::Item-->
+      <!-- <li
+        class="nav-item mb-3"
+        data-toggle="tooltip"
+        data-placement="right"
+        data-container="body"
+        data-boundary="window"
+        title="User Management"
+        container="body"
+      >
+        <a
+          class="nav-link btn btn-icon btn-clean btn-lg"
+          data-toggle="tab"
+          data-target="#kt_aside_tab_5"
+          [ngClass]="{ active: activeTabId === TABS[5] }"
+          role="tab"
+        >
+          <span
+            [inlineSVG]="'./assets/media/svg/icons/Home/Library.svg'"
+            cacheSVG="true"
+            class="svg-icon svg-icon-xl"
+          ></span>
+          <span class="_iconText">Dashboard</span>
+        </a>
+      </li> -->
+      <!--end::Item-->
+      <!--begin::Item-->
+      <!-- <li
+        class="nav-item mb-3"
+        data-toggle="tooltip"
+        data-placement="right"
+        data-container="body"
+        data-boundary="window"
+        title="Finance & Accounting"
+        container="body"
+      >
+        <a
+          class="nav-link btn btn-icon btn-clean btn-lg"
+          [ngClass]="{ active: activeTabId === TABS[6] }"
+          data-toggle="tab"
+          data-target="#kt_aside_tab_6"
+          role="tab"
+        >
+          <span
+            [inlineSVG]="'./assets/media/svg/icons/Files/File-plus.svg'"
+            cacheSVG="true"
+            class="svg-icon svg-icon-xl"
+          ></span>
+          <span class="_iconText"> Orders </span>
+        </a>
+      </li> -->
+      <!--end::Item-->
+    </ul>
+    <!--begin::Item-->
+    <!--end::Nav-->
+  </div>
+  <!--end::Nav Wrapper-->
+  <!--begin::Footer -->
+  <!-- <app-topbar
+    class="aside-footer d-flex flex-column align-items-center flex-column-auto py-4 py-lg-10"
+  ></app-topbar> -->
+  <!--end::Footer-->
+  <!--end::Primary-->
+</div>
+<ng-container *ngIf="disableAsideSecondaryDisplay">
+  <!--begin::Secondary-->
+  <div class="aside-secondary d-flex flex-row-fluid">
+    <!--begin::Workspace-->
+    <div class="aside-workspace scroll scroll-push my-2">
+      <!--begin::Tab Content-->
+      <div class="tab-content">
+        <!--begin::Tab Pane-->
+        <div
+          class="tab-pane p-3 px-lg-7 py-lg-5 fade"
+          [ngClass]="{ 'show active': activeTabId === TABS[1] }"
+          id="kt_aside_tab_1"
+        >
+          <app-aside-search></app-aside-search>
+        </div>
+        <!--end::Tab Pane-->
+        <!--begin::Tab Pane-->
+        <div
+          class="tab-pane fade"
+          id="kt_aside_tab_2"
+          [ngClass]="{ 'show active': activeTabId === TABS[2] }"
+        >
+          <ng-container *ngIf="asideMenuStatic">
+            <!--begin::STATIC Aside-->
+            <app-aside-static
+              class="aside-menu-wrapper flex-column-fluid"
+              id="kt_aside_menu_wrapper"
+            ></app-aside-static>
+            <!--end::STATIC Aside-->
+          </ng-container>
+          <ng-container *ngIf="!asideMenuStatic">
+            <!--begin::DYNAMIC Aside-->
+            <app-aside-dynamic
+              class="aside-menu-wrapper flex-column-fluid"
+              id="kt_aside_menu_wrapper"
+            ></app-aside-dynamic>
+            <!--end::DYNAMIC Aside-->
+          </ng-container>
+        </div>
+        <!--end::Tab Pane-->
+      </div>
+    </div>
+  </div>
+</ng-container>

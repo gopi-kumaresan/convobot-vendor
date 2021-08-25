@@ -1,0 +1,128 @@
+<div class="card card-custom">
+  <!--begin::Body-->
+  <div class="p-4 _overflowAuto" [style.height.px]="totalHeight - 100">
+    <div class="mb-3">
+      <button
+        (click)="itemModelStatus = true"
+        class="btn btn-primary btn-fixed-height font-weight-bold px-2 px-lg-5 mr-3 _mlauto"
+      >
+        Add item
+      </button>
+    </div>
+
+    <div
+      class="row _wid100 mb-3 p-1 _cardBackgroundColor _curPointer"
+      *ngFor="let item of itemListData; let i = index"
+    >
+      <div class="col-xl-2 p-2">
+        <img class="_listImg" [src]="item.imgUrl" />
+      </div>
+      <div class="col-xl-10 p-2">
+        <div class="row">
+          <div class="col-xl-8">
+            <div class="font-weight-bold mt-1">
+              Name :
+              <img
+                style="width: 26px"
+                src="/assets/media/client-logos/logo1.png"
+              />
+              <img
+                style="width: 26px"
+                src="/assets/media/client-logos/logo1.png"
+              />
+            </div>
+            <div class="font-size-sm font-weight-bold mt-1 ml-2">
+              {{ item.itemName }}
+            </div>
+          </div>
+
+          <div class="col-xl-4">
+            <div class="font-weight-bold mt-1">Price :</div>
+            <div class="font-size-sm font-weight-bold mt-1 ml-2">
+              {{ item.price }}
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xl-8">
+            <div class="font-weight-bold mt-1">
+              Description :
+              <img
+                style="width: 26px"
+                src="/assets/media/client-logos/logo1.png"
+              />
+              <img
+                style="width: 26px"
+                src="/assets/media/client-logos/logo1.png"
+              />
+            </div>
+            <div class="black mt-1 font-size-sm ml-2 _textJustify">
+              {{ item.descripton }}
+            </div>
+          </div>
+
+          <div class="col-xl-4 mt-1">
+            <div>
+              <button
+                style="width: 85%"
+                class="btn _filterInactiveButton font-weight-bold px-2 px-lg-5 mr-2"
+              >
+                Know more
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="col-xl-6 p-2">
+        <div class="font-weight-bold mt-1">Name :</div>
+        <div class="font-size-sm font-weight-bold mt-1 ml-2">
+          {{ menu.menuName }}
+        </div>
+        <div class="font-weight-bold mt-1">Description :</div>
+        <div class="black mt-1 font-size-sm ml-2 _textJustify">
+          {{ menu.descripton }}
+        </div>
+
+        <div class="text-muted mt-1 font-size-xs">
+          Since : {{ menu.initialSince }}
+        </div>
+        <div class="text-muted mt-1 font-size-xs">
+          Last Since : {{ menu.lastSince }}
+        </div>
+       
+      </div>
+
+      <div class="col-xl-4">
+        <div class="font-weight-bold mt-1">Price :</div>
+        <div class="font-size-sm font-weight-bold mt-1 ml-2">
+          {{ menu.menuName }}
+        </div>
+
+        <div>
+          <button
+            style="width: 85%"
+            class="btn _filterInactiveButton font-weight-bold px-2 px-lg-5 mr-2"
+          >
+            Know more
+          </button>
+        </div>
+      </div> -->
+    </div>
+  </div>
+</div>
+
+<p-dialog
+  header="Add Item"
+  modal="true"
+  position="right"
+  [(visible)]="itemModelStatus"
+  class="_smallSizeModal"
+>
+  <mat-tab-group [style.height.px]="totalHeight - 100">
+    <mat-tab label="Main Details"></mat-tab>
+    <mat-tab label="Base"> </mat-tab>
+    <mat-tab label="AddOn"></mat-tab>
+    <mat-tab label="Ingredient"> </mat-tab>
+  </mat-tab-group>
+</p-dialog>

@@ -1,0 +1,225 @@
+<!-- Filter and search div begin -->
+<div class="mb-4 _searchFilterDiv card card-custom">
+  <div class="row">
+    <div class="col-xl-4 col-lg-12">
+      <div class="input-icon h-40px">
+        <input
+          type="text"
+          class="form-control form-control-lg form-control-solid h-40px mt-3"
+          placeholder="Search..."
+          id="generalSearch"
+        />
+        <span>
+          <span
+            [inlineSVG]="'./assets/media/svg/icons/General/Search.svg'"
+            cacheSVG="true"
+            class="svg-icon svg-icon-lg"
+          ></span>
+        </span>
+      </div>
+    </div>
+    <div class="col-xl-8 col-lg-12">
+      <div class="_filterLabel">
+        <button
+          class="btn btn-primary btn-fixed-height font-weight-bold px-2 px-lg-5 mr-2 _filterButton"
+        >
+          &nbsp;&nbsp;&nbsp;&nbsp;ALL&nbsp;&nbsp;&nbsp;&nbsp;
+        </button>
+
+        <button
+          matBadge="1"
+          matBadgeSize="medium"
+          class="btn _filterInactiveButton btn-fixed-height font-weight-bold px-2 px-lg-5 mr-2 _filterButton _textColor"
+        >
+          &nbsp;&nbsp;&nbsp;&nbsp;New&nbsp;&nbsp;&nbsp;&nbsp;
+        </button>
+        <button
+          matBadge="3"
+          matBadgeSize="medium"
+          class="btn _filterInactiveButton btn-fixed-height font-weight-bold px-2 px-lg-5 mr-2 _filterButton"
+        >
+          Preparing
+        </button>
+        <button
+          matBadge="5"
+          matBadgeSize="medium"
+          class="btn _filterInactiveButton btn-fixed-height font-weight-bold px-2 px-lg-5 mr-2 _filterButton"
+        >
+          &nbsp;&nbsp;Ready&nbsp;&nbsp;
+        </button>
+        <button
+          class="btn _filterInactiveButton btn-fixed-height font-weight-bold px-2 px-lg-5 mr-2 _filterButton"
+        >
+          &nbsp;Rejected&nbsp;
+        </button>
+        <button
+          class="btn _filterInactiveButton btn-fixed-height font-weight-bold px-2 px-lg-5 mr-2 _filterButton"
+        >
+          Past Order
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Filter and search div end -->
+
+<!-- order list and order details div begin -->
+<div class="row">
+  <div class="col-xl-4 mb-4">
+    <div
+      class="_overflowAuto card card-custom"
+      [style.height.px]="totalHeight - 200"
+    >
+      <div
+        [ngClass]="{ _activeRowWithBorder: i === 1 }"
+        class="list list-hover"
+        *ngFor="let order of orderListData; let i = index"
+      >
+        <div class="list-item hoverable p-3 p-lg-3">
+          <div class="d-flex align-items-center">
+            <div class="d-flex flex-column flex-grow-1 mr-2">
+              <span class="mb-1">{{ order.name }}</span>
+              <span class="mb-1 _textOverflow"> {{ order.address }}</span>
+
+              <span class="mb-1">{{ order.orderNumber }}</span>
+              <span class="mb-1">{{ order.itemPrice }}</span>
+
+              <span class="text-muted">{{ order.timestamp }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-8">
+    <div class="card card-custom">
+      <div
+        class="pt-4 pr-4 pl-4 _overflowAuto"
+        [style.height.px]="totalHeight - 200"
+      >
+        <div class="mb-4 p-3 _bodyBackgroundColor">
+          <div class="row">
+            <div
+              class="col-xl-4 col-lg-11 col-md-10 col-sm-10 col-xs-8 pb-1 pt-1"
+            >
+              <span class="mb-3">5168</span><br />
+            </div>
+            <div
+              class="col-xl-4 col-lg-11 col-md-10 col-sm-10 col-xs-8 pb-1 pt-1"
+            >
+              <span class="text-muted"> 29 Apr 2020 10:00 AM</span>
+            </div>
+            <div
+              class="col-xl-3 col-lg-11 col-md-10 col-sm-10 col-xs-8 _textEndStart"
+            >
+              <span
+                style="padding: 3px"
+                [inlineSVG]="'./assets/media/svg/icons/General/setting.svg'"
+                cacheSVG="true"
+                class="svg-icon svg-icon-xl"
+              ></span>
+              <span
+                style="padding: 3px"
+                [inlineSVG]="'./assets/media/svg/icons/General/setting.svg'"
+                cacheSVG="true"
+                class="svg-icon svg-icon-xl"
+              ></span>
+            </div>
+            <div
+              class="col-xl-1 col-lg-1 col-md-2 col-sm-2 col-xs-4 _orderExpand"
+            >
+              <img
+                class="_curPointer"
+                (click)="expandOrder = !expandOrder"
+                [src]="
+                  !expandOrder
+                    ? './assets/media/convobot-icon/down-arrow.png'
+                    : './assets/media/convobot-icon/up-arrow.png'
+                "
+              />
+            </div>
+          </div>
+
+          <div class="row" *ngIf="expandOrder">
+            <div class="col-xl-12 col-lg-12 pb-1 pt-1">
+              <span class="mb-1">Abdulaziz</span>
+              <p class="mb-1 _address">
+                P.O. Box 01, Budaiya, Kingdom of Bahrain
+              </p>
+
+              <span class="text-muted"> 1 Item for BD 50.20 </span>
+            </div>
+          </div>
+        </div>
+
+        <div [style.height.px]="totalHeight - 400" class="_overflowAuto">
+          <div class="_borderLine p-3">
+            <div class="row">
+              <div
+                class="col-xl-6 col-lg-12 pb-1 pt-1"
+                style="display: inherit"
+              >
+                <span
+                  [inlineSVG]="'./assets/media/svg/icons/General/setting.svg'"
+                  cacheSVG="true"
+                  class="svg-icon svg-icon-xl pt-2 pr-2"
+                ></span>
+
+                <div>
+                  <span class="font-weight-bold">Hi-Tech Bawarchi</span><br />
+                  <span class="text-muted">MAIN COURSE</span>
+                </div>
+              </div>
+              <div class="col-xl-6 col-lg-12 pb-1 pt-1 _textEndStart">
+                <span class="text-muted">BD 50.20</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-4 _bodyBackgroundColor p-3">
+          <div class="row">
+            <div class="col-xl-4 pb-1 pt-1">
+              <span class="text-muted">PICK-UP-TIME</span> <br />
+              <span class="font-weight-bold mb-3">15 Mins</span>
+            </div>
+            <div class="col-xl-4 pb-1 pt-1">
+              <span class="text-muted">DELIVERY EXECUTIVE</span> <br />
+              <span class="font-weight-bold mb-3">ASSIGNING...</span>
+            </div>
+            <div class="col-xl-4 pb-1 pt-1">
+              <span class="text-muted">GRAND TOTAL</span> <br />
+              <span class="font-weight-bold mb-3">BD 50.20</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div
+            class="col-xl-6 col-lg-12 mb-4"
+            style="text-align: -webkit-center"
+          >
+            <button
+              style="width: 100%"
+              class="btn btn-info font-weight-bold px-2 px-lg-5 mr-2"
+            >
+              MARK OUT OF STOCK
+            </button>
+          </div>
+          <div
+            class="col-xl-6 col-lg-12 mb-4"
+            style="text-align: -webkit-center"
+          >
+            <button
+              style="width: 100%"
+              class="btn btn-primary font-weight-bold px-2 px-lg-5 mr-2"
+            >
+              CONFIRM ORDER
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- order list and order details div end -->

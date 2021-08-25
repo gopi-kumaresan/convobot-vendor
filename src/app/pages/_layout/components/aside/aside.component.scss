@@ -1,0 +1,28 @@
+:host {
+  .aside {
+    height: 100%;
+
+    .aside-menu {
+      margin: 0;
+    }
+
+    .tooltip {
+      z-index: 1000 !important;
+    }
+  }
+
+  // fixed text line break issue on minimized aside hover
+  .menu-text {
+    white-space: nowrap;
+  }
+}
+
+._iconText {
+  font-size: 11px;
+  position: absolute;
+  margin-top: 40px;
+}
+
+li {
+  height: 56px;
+}

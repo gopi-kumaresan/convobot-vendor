@@ -1,0 +1,347 @@
+<div>
+  <div class="mb-2 col-xl-3 col-lg-3 col-md-3 col-sm-12 col-xs-12">
+    <label>Menu Name</label>
+    <input type="text" class="form-control" placeholder="Menu Name" />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xl-3 mb-4">
+    <div class="_categoriesCard">
+      <h5 class="mt-2 mb-4">Categories List</h5>
+
+      <div class="list list-hover">
+        <div *ngFor="let cate of CategoriesList; let i = index">
+          <div
+            class="list-item hoverable p-4 p-lg-3"
+            [ngClass]="{ _activeRowWithBorder: i == 1 }"
+            *ngIf="cate.status"
+          >
+            <div class="row">
+              <span class="col-6 mb-1 mt-1 font-weight-bold"
+                >{{ cate.name }}
+              </span>
+              <span class="col-6 _textEnd">
+                <span
+                  pTooltip="Add Item"
+                  (click)="actionStatus = 'item'"
+                  [inlineSVG]="'./assets/media/svg/icons/General/Half-star.svg'"
+                  cacheSVG="true"
+                  class="svg-icon svg-icon-xl"
+                ></span>
+
+                <span
+                  (click)="actionStatus = 'subCategory'"
+                  pTooltip="Add Item Group"
+                  [inlineSVG]="'./assets/media/svg/icons/General/Half-star.svg'"
+                  cacheSVG="true"
+                  class="svg-icon svg-icon-xl"
+                ></span>
+
+                <span
+                  pTooltip="Delete Category"
+                  [inlineSVG]="'/assets/media/svg/icons/General/Trash.svg'"
+                  cacheSVG="true"
+                  class="svg-icon svg-icon-xl"
+                ></span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-3 mb-3">
+      <button
+        (click)="actionStatus = 'category'"
+        class="btn _filterInactiveButton font-weight-bold px-2 px-lg-5 mr-2"
+      >
+        + Add category
+      </button>
+    </div>
+  </div>
+
+  <div class="col-xl-6">
+    <h5 class="mt-2 mb-4">Item</h5>
+
+    <div *ngFor="let subCate of subCategories" class="mb-3">
+      <div class="row _wid100 _bodyBackgroundColor">
+        <div class="col-6">
+          <h5 class="mb-3 mt-3">{{ subCate.title }}</h5>
+        </div>
+        <div class="col-6 _textEnd _mauto">
+          <span
+            (click)="actionStatus = 'item'"
+            pTooltip="Add Item"
+            [inlineSVG]="'./assets/media/svg/icons/General/Half-star.svg'"
+            cacheSVG="true"
+            class="svg-icon svg-icon-xl _curPointer"
+          ></span>
+
+          <span
+            pTooltip="Delete Category"
+            [inlineSVG]="'/assets/media/svg/icons/General/Trash.svg'"
+            cacheSVG="true"
+            class="svg-icon svg-icon-xl _curPointer"
+          ></span>
+
+          <img
+            class="_curPointer ml-3"
+            (click)="subCate.collapseStatus = !subCate.collapseStatus"
+            [src]="
+              !subCate.collapseStatus
+                ? './assets/media/convobot-icon/down-arrow.png'
+                : './assets/media/convobot-icon/up-arrow.png'
+            "
+          />
+        </div>
+      </div>
+
+      <div *ngIf="!subCate.collapseStatus">
+        <div
+          class="row _wid100"
+          style="border: 1px solid #ecf1f6; padding: 10px"
+          *ngFor="let priceData of subCate.datas"
+        >
+          <div class="col-xl-9 col-lg-9 pb-1 pt-1" style="display: inherit">
+            <span
+              style="padding-top: 5px; padding-right: 5px"
+              [inlineSVG]="'./assets/media/svg/icons/General/setting.svg'"
+              cacheSVG="true"
+              class="svg-icon svg-icon-xl"
+            ></span>
+
+            <div>
+              <span class="font-weight-bold mb-3">{{
+                priceData.sub_categories_name
+              }}</span
+              ><br />
+              <span class="text-muted">{{ priceData.price }}</span>
+            </div>
+          </div>
+
+          <!-- <div class="col-xl-3 col-lg-3 pb-1 pt-1" style="display: inherit"> -->
+          <div
+            class="col-xl-3 _noPaddding _textCenter"
+            style="margin: auto 0px"
+          >
+            <button
+              (click)="actionStatus = 'addOn'"
+              style="width: 85%"
+              class="btn _filterInactiveButton font-weight-bold px-2 px-lg-5 mr-2"
+            >
+              Add On
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- </div> -->
+    </div>
+  </div>
+
+  <div class="col-xl-3" [ngSwitch]="actionStatus">
+    <div *ngSwitchCase="'item'">
+      <h5 class="mt-2 mb-4">Item List</h5>
+
+      <div class="input-icon h-40px mt-2">
+        <input
+          type="text"
+          class="form-control form-control-lg form-control-solid h-40px"
+          placeholder="Search..."
+          id="generalSearch"
+        />
+        <span>
+          <span
+            [inlineSVG]="'./assets/media/svg/icons/General/Search.svg'"
+            cacheSVG="true"
+            class="svg-icon svg-icon-lg"
+          ></span>
+        </span>
+      </div>
+      <div *ngFor="let item of itemList" class="m-4">
+        <p-checkbox [label]="item.itemName"></p-checkbox>
+      </div>
+
+      <div class="mt-3 mb-3">
+        <button
+          (click)="actionStatus = 'category'"
+          class="btn btn-primary btn-fixed-height font-weight-bold px-2 px-lg-5 mr-3 _mlauto"
+        >
+          Add Item
+        </button>
+      </div>
+    </div>
+
+    <div *ngSwitchCase="'category'">
+      <h5 class="mt-2 mb-4">Add Category</h5>
+      <div class="mt3 mb-3">
+        <p-radioButton
+          name="categoryAddType"
+          value="newCategory"
+          [(ngModel)]="categoryAddType"
+          label="Add New Category"
+        ></p-radioButton>
+      </div>
+
+      <div *ngIf="categoryAddType == 'newCategory'">
+        <div class="mb-2">
+          <label>Category Name</label>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="addNewCategory"
+            placeholder="Category Name"
+          />
+        </div>
+
+        <div class="mt-3 mb-3">
+          <button
+            (click)="addNewCategoryFunction('category')"
+            class="btn btn-primary btn-fixed-height font-weight-bold px-2 px-lg-5 mr-3 _mlauto"
+          >
+            Add category
+          </button>
+        </div>
+      </div>
+
+      <div class="mt3 mb-3">
+        <p-radioButton
+          name="categoryAddType"
+          value="existingCategory"
+          label="Add Existing Category"
+          [(ngModel)]="categoryAddType"
+        ></p-radioButton>
+      </div>
+
+      <div *ngIf="categoryAddType == 'existingCategory'">
+        <div class="input-icon h-40px mt-2">
+          <input
+            type="text"
+            class="form-control form-control-lg form-control-solid h-40px"
+            placeholder="Search..."
+            id="generalSearch"
+          />
+          <span>
+            <span
+              [inlineSVG]="'./assets/media/svg/icons/General/Search.svg'"
+              cacheSVG="true"
+              class="svg-icon svg-icon-lg"
+            ></span>
+          </span>
+        </div>
+
+        <div *ngFor="let cate of CategoriesList" class="m-4">
+          <p-checkbox
+            binary="true"
+            [label]="cate.name"
+            [(ngModel)]="cate.status"
+          ></p-checkbox>
+        </div>
+
+        <div class="mt-3 mb-3">
+          <button
+            (click)="addOnStatus = false"
+            class="btn btn-primary btn-fixed-height font-weight-bold px-2 px-lg-5 mr-3 _mlauto"
+          >
+            Add category
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div *ngSwitchCase="'addOn'">
+      <h5 class="mt-2 mb-4">Add On</h5>
+
+      <div *ngFor="let addOn of AddOnList" class="m-4">
+        <p-checkbox [label]="addOn.addOnName"></p-checkbox>
+      </div>
+
+      <div class="mt-3 mb-3">
+        <button
+          (click)="actionStatus = 'category'"
+          class="btn btn-primary btn-fixed-height font-weight-bold px-2 px-lg-5 mr-3 _mlauto"
+        >
+          Add On
+        </button>
+      </div>
+    </div>
+
+    <div *ngSwitchCase="'subCategory'">
+      <h5 class="mt-2 mb-4">Add Sub Category</h5>
+      <div class="mt3 mb-3">
+        <p-radioButton
+          name="subCategoryAddType"
+          value="newCategory"
+          [(ngModel)]="subCategoryAddType"
+          label="Add New Sub Category"
+        ></p-radioButton>
+      </div>
+
+      <div *ngIf="subCategoryAddType == 'newCategory'">
+        <div class="mb-2">
+          <label>Sub Category Name</label>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="addNewSubCategory"
+            placeholder="Sub Category Name"
+          />
+        </div>
+
+        <div class="mt-3 mb-3">
+          <button
+            (click)="addNewCategoryFunction('subCategory')"
+            class="btn btn-primary btn-fixed-height font-weight-bold px-2 px-lg-5 mr-3 _mlauto"
+          >
+            Add Sub Category
+          </button>
+        </div>
+      </div>
+
+      <div class="mt3 mb-3">
+        <p-radioButton
+          name="subCategoryAddType"
+          value="existingCategory"
+          label="Add Existing Sub Category"
+          [(ngModel)]="subCategoryAddType"
+        ></p-radioButton>
+      </div>
+
+      <div *ngIf="subCategoryAddType == 'existingCategory'">
+        <div class="input-icon h-40px mt-2">
+          <input
+            type="text"
+            class="form-control form-control-lg form-control-solid h-40px"
+            placeholder="Search..."
+            id="generalSearch"
+          />
+          <span>
+            <span
+              [inlineSVG]="'./assets/media/svg/icons/General/Search.svg'"
+              cacheSVG="true"
+              class="svg-icon svg-icon-lg"
+            ></span>
+          </span>
+        </div>
+
+        <div *ngFor="let subCate of subCategories" class="m-4">
+          <p-checkbox
+            binary="true"
+            [label]="subCate.title"
+            [(ngModel)]="subCate.status"
+          ></p-checkbox>
+        </div>
+
+        <div class="mt-3 mb-3">
+          <button
+            (click)="addOnStatus = false"
+            class="btn btn-primary btn-fixed-height font-weight-bold px-2 px-lg-5 mr-3 _mlauto"
+          >
+            Add Sub Category
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

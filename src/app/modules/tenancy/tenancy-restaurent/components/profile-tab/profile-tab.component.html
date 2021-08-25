@@ -1,0 +1,259 @@
+<div class="_textEnd mt-3">
+  <div>
+    <img
+      class="_editButtonStyle"
+      src="/assets/media/convobot-icon/edit-icon.svg"
+    />
+    <p-toggleButton
+      class="mr-2"
+      [(ngModel)]="editMode"
+      onLabel="Edit Mode Off"
+      offLabel="Edit Mode On"
+      onIcon="null"
+      offIcon="null"
+      [style]="{ width: '10em' }"
+    ></p-toggleButton>
+  </div>
+  <!-- <img
+    style="width: 18px; position: relative; left: 30px; z-index: 20"
+    src="/assets/media/convobot-icon/edit-icon.svg"
+  /> -->
+  <!-- <p-toggleButton
+    class="mr-2"
+    [(ngModel)]="editMode"
+    onLabel="Edit Mode Off"
+    offLabel="Edit Mode On"
+    onIcon=""
+    offIcon=""
+    [style]="{ width: '10em' }"
+  ></p-toggleButton> -->
+</div>
+
+<div class="row _wid100">
+  <div class="col-xl-6 col-lg-6 col-md-12 col-xs-12 mt-4">
+    <div class="form-group">
+      <label>Name</label>
+      <div *ngIf="editMode">
+        <input
+          type="text"
+          class="form-control"
+          name="address1"
+          placeholder="Restaurant Name"
+        />
+        <span class="form-text text-muted">Please enter restaurant name.</span>
+      </div>
+      <div class="font-size-lg font-weight-bold ml-2" *ngIf="!editMode">
+        Wing Man
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Description</label>
+      <div *ngIf="editMode">
+        <textarea
+          name="description"
+          placeholder="Description"
+          class="form-control"
+        ></textarea>
+        <span class="form-text text-muted">Please enter Description.</span>
+      </div>
+
+      <div
+        class="font-size-lg font-weight-bold ml-2 _textJustify"
+        *ngIf="!editMode"
+      >
+        Our meals are known to leave an impression on anyone and everyone. The
+        secret lies in the high-quality, impressionable ingredients we use. This
+        is why each of our burgers are someone's lifelong favorite.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Main Branch Address</label>
+      <div *ngIf="editMode">
+        <textarea
+          name="description"
+          placeholder="Main Branch Address"
+          class="form-control"
+        ></textarea>
+        <span class="form-text text-muted"
+          >Please enter main branch address.</span
+        >
+      </div>
+
+      <div
+        class="font-size-lg font-weight-bold ml-2 _textJustify"
+        *ngIf="!editMode"
+      >
+        Bldg. 1023, Rd. 3621, Area 436, Seef District P.O Box 2415, Manama,
+        Kingdom of Bahrain
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Countries</label>
+      <div *ngIf="editMode">
+        <input
+          type="text"
+          class="form-control"
+          name="address1"
+          placeholder="Countries"
+        />
+        <span class="form-text text-muted">Please enter the Countries.</span>
+      </div>
+
+      <div class="font-size-lg font-weight-bold ml-2" *ngIf="!editMode">
+        Bahrain
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Contact Number</label>
+      <div *ngIf="editMode">
+        <input
+          type="text"
+          class="form-control"
+          name="address1"
+          placeholder="Contact Number"
+        />
+        <span class="form-text text-muted">Please enter Contact Number.</span>
+      </div>
+
+      <div class="font-size-lg font-weight-bold ml-2" *ngIf="!editMode">
+        17588787
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Email</label>
+      <div *ngIf="editMode">
+        <input
+          type="text"
+          class="form-control"
+          name="address1"
+          placeholder="Email"
+        />
+        <span class="form-text text-muted">Please enter Email.</span>
+      </div>
+
+      <div class="font-size-lg font-weight-bold ml-2" *ngIf="!editMode">
+        info@WingMan.com
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xl-6 col-lg-6 col-md-12 col-xs-12 mt-4">
+    <div class="form-group">
+      <label>Registration Number</label>
+      <div *ngIf="editMode">
+        <input
+          type="text"
+          class="form-control"
+          name="address1"
+          placeholder="Registration Number"
+        />
+        <span class="form-text text-muted"
+          >Please enter Registration Number.</span
+        >
+      </div>
+
+      <div class="font-size-lg font-weight-bold ml-2" *ngIf="!editMode">
+        R02563
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>VAT Number</label>
+      <div *ngIf="editMode">
+        <input
+          type="text"
+          class="form-control"
+          name="address1"
+          placeholder="VAT Number"
+        />
+        <span class="form-text text-muted">Please enter VAT Number.</span>
+      </div>
+
+      <div class="font-size-lg font-weight-bold ml-2" *ngIf="!editMode">
+        22563
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Bank Account Number</label>
+      <div *ngIf="editMode">
+        <input
+          type="text"
+          class="form-control"
+          name="address1"
+          placeholder="Bank Account Number"
+        />
+        <span class="form-text text-muted"
+          >Please enter Bank Account Number.</span
+        >
+      </div>
+
+      <div class="font-size-lg font-weight-bold ml-2" *ngIf="!editMode">
+        225635649465
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Bank Name</label>
+      <div *ngIf="editMode">
+        <input
+          type="text"
+          class="form-control"
+          name="address1"
+          placeholder="Bank Name"
+        />
+        <span class="form-text text-muted">Please enter Bank Name.</span>
+      </div>
+
+      <div class="font-size-lg font-weight-bold ml-2" *ngIf="!editMode">
+        ABC Islamic Bank
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Branch Name </label>
+      <div *ngIf="editMode">
+        <input
+          type="text"
+          class="form-control"
+          name="address1"
+          placeholder="Branch Name"
+        />
+        <span class="form-text text-muted">Please enter Branch Name.</span>
+      </div>
+      <div class="font-size-lg font-weight-bold ml-2" *ngIf="!editMode">
+        Wing Man Saar
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Branch Code </label>
+      <div *ngIf="editMode">
+        <input
+          type="text"
+          class="form-control"
+          name="address1"
+          placeholder="Branch Code"
+        />
+        <span class="form-text text-muted">Please enter Branch Code.</span>
+      </div>
+
+      <div class="font-size-lg font-weight-bold ml-2" *ngIf="!editMode">
+        B256
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="editMode">
+  <button
+    class="btn btn-primary btn-fixed-height font-weight-bold px-2 px-lg-5 mr-2 _mlauto"
+  >
+    Save
+  </button>
+</div>

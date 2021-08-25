@@ -1,0 +1,60 @@
+<!-- <div class="card card-custom">
+  <div class="p-5 _overflowAuto" [style.height.px]="totalHeight - 100"> -->
+    <div
+      class="row _wid100 mb-3 _cardBackgroundColor"
+      *ngFor="let order of orderListData; let i = index"
+    >
+      <div class="col-xl-2 p-2" style="margin: auto">
+        <!-- <div class="font-weight-bold mt-1">Channels</div> -->
+        <div class="mt-1">
+          <img class="m-1" src="assets/media/svg/social-icons/google.svg" />
+          Home
+          <!-- <img class="m-1" src="assets/media/svg/social-icons/google.svg" /> -->
+        </div>
+
+        <!-- <div class="mt-5 font-size-sm">
+      <mat-radio-group [(ngModel)]="activeButton">
+        <mat-radio-button value="2">Active</mat-radio-button>
+      </mat-radio-group>
+    </div> -->
+      </div>
+
+      <div class="col-xl-4 p-2">
+        <!-- <div class="text-primary font-weight-bold mt-1">{{ order.name }}</div> -->
+        <div class="black mt-1">
+          {{ order.address }}
+        </div>
+        <div class="black mt-3">{{ order.landmard }}</div>
+
+        <!-- <div class="text-muted mt-1 font-size-xs">
+          Since : {{ order.initialSince }}
+        </div>
+        <div class="text-muted mt-1 font-size-xs">
+          Last Since : {{ order.lastSince }}
+        </div> -->
+      </div>
+
+      <div class="col-xl-3 p-2">
+        <!-- <div class="font-weight-bold mt-1">No of Orders -</div> -->
+        <div class="black mt-1">No of Orders - {{ order.noOfOrders }}</div>
+        <div class="black mt-1">Delivered - {{ order.delivered }}</div>
+        <div class="black mt-1">Returned - {{ order.returned }}</div>
+      </div>
+
+      <div class="col-xl-3 p-2 _textCenter" style="margin: auto">
+        <div class="row">
+          <div
+            class="col-xl-12 col-lg-12 mb-4"
+            style="text-align: -webkit-center"
+          >
+            <p-selectButton
+              [options]="blockAddressOptions"
+              optionLabel="name"
+              [(ngModel)]="blockAddress"
+            ></p-selectButton>
+          </div>
+        </div>
+      </div>
+    </div>
+  <!-- </div>
+</div> -->

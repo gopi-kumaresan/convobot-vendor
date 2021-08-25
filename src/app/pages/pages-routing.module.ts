@@ -1,0 +1,133 @@
+import { NgModule } from "@angular/core";
+import { Routes, RouterModule } from "@angular/router";
+import { LayoutComponent } from "./_layout/layout.component";
+
+const routes: Routes = [
+  {
+    path: "",
+    component: LayoutComponent,
+    children: [
+      {
+        path: "dashboard",
+        loadChildren: () =>
+          import("./dashboard/dashboard.module").then((m) => m.DashboardModule),
+      },
+      {
+        path: "builder",
+        loadChildren: () =>
+          import("./builder/builder.module").then((m) => m.BuilderModule),
+      },
+      {
+        path: "ecommerce",
+        loadChildren: () =>
+          import("../modules/e-commerce/e-commerce.module").then(
+            (m) => m.ECommerceModule
+          ),
+      },
+      {
+        path: "user-management",
+        loadChildren: () =>
+          import("../modules/user-management/user-management.module").then(
+            (m) => m.UserManagementModule
+          ),
+      },
+      {
+        path: "user-profile",
+        loadChildren: () =>
+          import("../modules/user-profile/user-profile.module").then(
+            (m) => m.UserProfileModule
+          ),
+      },
+      {
+        path: "ngbootstrap",
+        loadChildren: () =>
+          import("../modules/ngbootstrap/ngbootstrap.module").then(
+            (m) => m.NgbootstrapModule
+          ),
+      },
+      {
+        path: "wizards",
+        loadChildren: () =>
+          import("../modules/wizards/wizards.module").then(
+            (m) => m.WizardsModule
+          ),
+      },
+      {
+        path: "material",
+        loadChildren: () =>
+          import("../modules/material/material.module").then(
+            (m) => m.MaterialModule
+          ),
+      },
+      {
+        path: "order",
+        loadChildren: () =>
+          import("../modules/order/order.module").then((m) => m.OrderModule),
+      },
+      {
+        path: "menu",
+        loadChildren: () =>
+          import("../modules/categories-menus/categories-menus.module").then(
+            (m) => m.CategoriesMenusModule
+          ),
+      },
+      {
+        path: "customer-list",
+        loadChildren: () =>
+          import(
+            "../modules/customer-details/customer-list/customer-list.module"
+          ).then((m) => m.CustomerListModule),
+      },
+      {
+        path: "customer-details",
+        loadChildren: () =>
+          import(
+            "../modules/customer-details/customer-view-details/customer-view-details.module"
+          ).then((m) => m.CustomerViewDetailsModule),
+      },
+      {
+        path: "",
+        redirectTo: "order",
+        pathMatch: "full",
+      },
+      {
+        path: "**",
+        redirectTo: "error/404",
+      },
+    ],
+  },
+  {
+    path: "setting",
+    component: LayoutComponent,
+    children: [
+      {
+        path: "tenancy",
+        loadChildren: () =>
+          import("../modules/tenancy/tenancy.module").then(
+            (m) => m.TenancyModule
+          ),
+      },
+      {
+        path: "fods",
+        loadChildren: () =>
+          import("../modules/fods/fods.module").then((m) => m.FodsModule),
+      },
+
+      {
+        path: "",
+        redirectTo: "tenancy",
+        pathMatch: "full",
+      },
+      {
+        path: "**",
+        redirectTo: "error/404",
+      },
+    ],
+  },
+];
+
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
+})
+export class PagesRoutingModule {}

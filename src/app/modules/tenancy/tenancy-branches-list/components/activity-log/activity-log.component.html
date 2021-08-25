@@ -1,0 +1,36 @@
+<div class="mt-3">
+  <p-calendar inputId="basic" placeholder="Date Filter"></p-calendar>
+</div>
+<div
+  class="row mt-3 p-1 _wid100 _cardBackgroundColor"
+  *ngFor="let activity of activityListData; let i = index"
+>
+  <div class="col-xl-4 p-2">
+    <div class="font-weight-bold mt-1">Causer Name :</div>
+    <div class="font-size-sm font-weight-bold mt-1 ml-2">
+      {{ activity.causerName }}
+    </div>
+    <div class="font-weight-bold mt-1">Description :</div>
+    <div class="black _textOverflow mt-1 font-size-sm ml-2">
+      {{ activity.Description }}
+    </div>
+  </div>
+
+  <div class="col-xl-4 p-2">
+    <div class="font-weight-bold mt-1">IP Address :</div>
+    <div class="font-size-sm mt-1 ml-2">
+      {{ activity.ipAddress }}
+    </div>
+    <div class="font-weight-bold mt-1">Browser :</div>
+    <div class="black _textOverflow mt-1 font-size-sm ml-2">
+      {{ activity.Browser }}
+    </div>
+  </div>
+
+  <div class="col-xl-4 p-2">
+    <div class="font-weight-bold mt-1">Datetime :</div>
+    <div class="font-size-sm mt-1 ml-2">
+      {{ activity.dateTime }}
+    </div>
+  </div>
+</div>
