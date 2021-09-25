@@ -1,0 +1,115 @@
+<div class="card card-custom">
+  <!--begin::Body-->
+  <div class="p-4 _overflowAuto" [style.height.px]="totalHeight - 100">
+    <div class="mb-3">
+      <button
+        (click)="deliveryModelStatus = true"
+        class="
+          btn btn-primary btn-fixed-height
+          font-weight-bold
+          px-2 px-lg-5
+          mr-3
+          _mlauto
+        "
+      >
+        Add Delivery Area
+      </button>
+    </div>
+
+    <agm-map
+      [style.height.px]="totalHeight - 180"
+      [latitude]="51.673858"
+      [longitude]="7.815982"
+      (mapReady)="testEvents($event)"
+    >
+      <!-- show polygon datas -->
+      <agm-polygon
+        (polyClick)="clickedPolygon(poly)"
+        *ngFor="let poly of paths; let i = index"
+        [paths]="poly.latLng"
+      >
+        <agm-info-window
+          [maxWidth]="200"
+          [latitude]="poly.latLng[0].lat"
+          [longitude]="poly.latLng[0].lng"
+          [isOpen]="poly.open"
+          (infoWindowClose)="infoWindowClose(poly)"
+        >
+          <div class="mb-3">
+            <label>Delivery area Name</label>
+            <div class="font-size-lg font-weight-bold ml-2">Rotterdam</div>
+          </div>
+
+          <div class="mb-3">
+            <label>Price</label>
+            <div class="font-size-lg font-weight-bold ml-2">BD 12.00</div>
+          </div>
+
+          <button
+            (click)="deliveryModelStatus = true"
+            class="
+              btn btn-primary btn-fixed-height
+              font-weight-bold
+              px-2 px-lg-5
+              mr-3
+              _mlauto
+            "
+          >
+            Edit Delivery Area
+          </button>
+        </agm-info-window>
+      </agm-polygon>
+
+      <!-- show circle datas -->
+      <agm-circle
+        *ngFor="let circle of circleDatas"
+        [latitude]="circle.lat"
+        [longitude]="circle.lng"
+        [radius]="20000"
+        [fillColor]="'red'"
+        (circleClick)="clickedPolygon(circle)"
+      >
+        <agm-info-window
+          [maxWidth]="200"
+          [latitude]="circle.lat"
+          [longitude]="circle.lng"
+          [isOpen]="circle.open"
+          (infoWindowClose)="infoWindowClose(circle)"
+        >
+          <div class="mb-3">
+            <label>Delivery area Name</label>
+            <div class="font-size-lg font-weight-bold ml-2">Rotterdam</div>
+          </div>
+
+          <div class="mb-3">
+            <label>Price</label>
+            <div class="font-size-lg font-weight-bold ml-2">BD 12.00</div>
+          </div>
+
+          <button
+            (click)="deliveryModelStatus = true"
+            class="
+              btn btn-primary btn-fixed-height
+              font-weight-bold
+              px-2 px-lg-5
+              mr-3
+              _mlauto
+            "
+          >
+            Edit Delivery Area
+          </button>
+        </agm-info-window>
+      </agm-circle>
+    </agm-map>
+  </div>
+</div>
+
+<p-dialog
+  header="Add Delivery Area"
+  modal="true"
+  position="right"
+  [(visible)]="deliveryModelStatus"
+  class="_largeSizeModal"
+>
+  <app-add-delivery-area></app-add-delivery-area>
+</p-dialog>

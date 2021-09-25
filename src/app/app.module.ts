@@ -1,28 +1,36 @@
-import { NgModule, APP_INITIALIZER } from "@angular/core";
-import { BrowserModule } from "@angular/platform-browser";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { HttpClientModule } from "@angular/common/http";
-import { HttpClientInMemoryWebApiModule } from "angular-in-memory-web-api";
+import { environment } from "src/environments/environment";
+
+// Highlight JS
+import { HighlightModule, HIGHLIGHT_OPTIONS } from "ngx-highlightjs";
+
+// services
+import { AuthService } from "./modules/auth/_services/auth.service";
+import { FakeAPIService } from "./_fake/fake-api.service";
+
+// angular modules and components
+import { TenancyModule } from "./modules/tenancy/tenancy.module";
+import { SplashScreenModule } from "./_metronic/partials/layout/splash-screen/splash-screen.module";
 import { ClipboardModule } from "ngx-clipboard";
 import { TranslateModule } from "@ngx-translate/core";
 import { InlineSVGModule } from "ng-inline-svg";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { AppRoutingModule } from "./app-routing.module";
+import { NgModule, APP_INITIALIZER } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
 import { AppComponent } from "./app.component";
-import { AuthService } from "./modules/auth/_services/auth.service";
-import { environment } from "src/environments/environment";
-// Highlight JS
-import { HighlightModule, HIGHLIGHT_OPTIONS } from "ngx-highlightjs";
-import { SplashScreenModule } from "./_metronic/partials/layout/splash-screen/splash-screen.module";
-// #fake-start#
-import { FakeAPIService } from "./_fake/fake-api.service";
-// import { ButtonModule } from 'primeng/button/button';
 
-// UI components
-import { ButtonModule } from "primeng-lts/button";
-// import { DialogModule } from "primeng-lts/dialog";
+// http client module
+import { httpInterceptor } from "../../src/app/_metronic/core/interceptor/http.interceptor";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
+import { HttpClientInMemoryWebApiModule } from "angular-in-memory-web-api";
 
-// #fake-end#
+// UI components modules
+import { MessageService } from "primeng-lts/api";
+import { ToastModule } from "primeng-lts/toast";
+import { NgxSpinnerModule } from "ngx-spinner";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { MatTabsModule } from "@angular/material/tabs";
+import { DialogModule } from "primeng-lts/dialog";
 
 function appInitializer(authService: AuthService) {
   return () => {
@@ -43,20 +51,26 @@ function appInitializer(authService: AuthService) {
     HighlightModule,
     ClipboardModule,
     // #fake-start#
-    environment.isMockEnabled
-      ? HttpClientInMemoryWebApiModule.forRoot(FakeAPIService, {
-          passThruUnknownUrl: true,
-          dataEncapsulation: false,
-        })
-      : [],
+    // environment.isMockEnabled
+    //   ? HttpClientInMemoryWebApiModule.forRoot(FakeAPIService, {
+    //       passThruUnknownUrl: true,
+    //       dataEncapsulation: false,
+    //     })
+    //   : [],
     // #fake-end#
     AppRoutingModule,
     InlineSVGModule.forRoot(),
     NgbModule,
-    ButtonModule,
-    // DialogModule,
+    DialogModule,
+    MatTabsModule,
+    TenancyModule,
+    ToastModule,
+    NgxSpinnerModule,
   ],
   providers: [
+    MessageService,
+    AppComponent,
+    { provide: HTTP_INTERCEPTORS, useClass: httpInterceptor, multi: true },
     {
       provide: APP_INITIALIZER,
       useFactory: appInitializer,

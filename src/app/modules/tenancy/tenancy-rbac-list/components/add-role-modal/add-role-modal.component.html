@@ -1,0 +1,103 @@
+<div class="row _wid100">
+  <div class="col-xl-12 col-lg-12 col-md-12 col-xs-12 mt-4">
+    <div class="form-group">
+      <label>Role Name</label>
+      <input type="text" class="form-control" placeholder="First Name" />
+      <span class="form-text text-muted">Please enter the role name.</span>
+    </div>
+
+    <div class="form-group">
+      <label>Description</label>
+
+      <textarea
+        name="description"
+        placeholder="Description"
+        class="form-control"
+      ></textarea>
+      <span class="form-text text-muted">Please enter Description.</span>
+    </div>
+  </div>
+</div>
+
+<p-table [value]="menusLists">
+  <ng-template pTemplate="header">
+    <tr style="border-bottom: 1px solid #c8c8c8">
+      <th class="header">Menus</th>
+      <th class="header">Menu Access</th>
+      <!-- <th class="header">Full Access</th>
+          <th class="header">View</th>
+          <th class="header">Create</th>
+          <th class="header">Edit</th>
+          <th class="header">Delete</th>
+          <th class="header">Assign Owner</th> -->
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-data>
+    <tr>
+      <td>
+        {{ data.module_name }}
+      </td>
+      <td class="_textCenter">
+        <p-checkbox [(ngModel)]="data.view" binary="true"></p-checkbox>
+      </td>
+      <!-- <td>
+            <p-checkbox
+              [(ngModel)]="data.full_access"
+              binary="true"
+              [disabled]="viewMode"
+            ></p-checkbox>
+          </td>
+          <td>
+            <p-checkbox
+              [(ngModel)]="data.view"
+              binary="true"
+              [disabled]="viewMode"
+            ></p-checkbox>
+          </td>
+          <td>
+            <p-checkbox
+              [(ngModel)]="data.create"
+              binary="true"
+              [disabled]="viewMode"
+            ></p-checkbox>
+          </td>
+          <td>
+            <p-checkbox
+              [(ngModel)]="data.edit"
+              binary="true"
+              [disabled]="viewMode"
+            ></p-checkbox>
+          </td>
+          <td>
+            <p-checkbox
+              [(ngModel)]="data.delete"
+              binary="true"
+              [disabled]="viewMode"
+            >
+            </p-checkbox>
+          </td>
+          <td>
+            <p-checkbox
+              [(ngModel)]="data.assign_owner"
+              binary="true"
+              [disabled]="viewMode"
+            ></p-checkbox>
+          </td> -->
+    </tr>
+  </ng-template>
+</p-table>
+
+<div>
+  <button
+    class="
+      btn btn-primary btn-fixed-height
+      font-weight-bold
+      px-2 px-lg-5
+      mt-4
+      mr-2
+      _mlauto
+    "
+  >
+    Save
+  </button>
+</div>

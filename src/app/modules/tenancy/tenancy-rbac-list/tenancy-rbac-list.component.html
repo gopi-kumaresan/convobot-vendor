@@ -1,0 +1,87 @@
+<div class="card card-custom">
+  <div class="p-4 _overflowAuto" [style.height.px]="totalHeight - 100">
+    <div class="mb-2">
+      <button
+        (click)="roleModalStatus = true"
+        class="
+          btn btn-primary btn-fixed-height
+          font-weight-bold
+          px-2 px-lg-5
+          mr-3
+          _mlauto
+        "
+      >
+        Add Role
+      </button>
+    </div>
+
+    <div
+      class="row _wid100 mb-3 _cardBackgroundColor"
+      *ngFor="let branch of branchListData; let i = index"
+    >
+      <div class="col-xl-6 p-2">
+        <div class="font-weight-bold mt-1">Role :</div>
+        <div class="black _textOverflow mt-1 font-size-sm ml-2">
+          {{ branch.role }}
+        </div>
+
+        <div class="font-weight-bold mt-1">Description :</div>
+        <div class="font-size-sm mt-1 ml-2">
+          {{ branch.description }}
+        </div>
+      </div>
+
+      <div class="col-xl-6 p-2">
+        <div class="font-weight-bold mt-1">Actions :</div>
+        <div class="font-size-sm mt-1 ml-2">
+          <span class="navi-icon mr-5 _curPointer">
+            <span
+              pTooltip="View Role"
+              [inlineSVG]="
+                './assets/media/svg/icons/Communication/Mail-opened.svg'
+              "
+              cacheSVG="true"
+              class="svg-icon"
+            ></span>
+          </span>
+
+          <span class="navi-icon mr-5 _curPointer">
+            <span
+              pTooltip="Edit Role"
+              [inlineSVG]="
+                './assets/media/svg/icons/Communication/Mail-opened.svg'
+              "
+              cacheSVG="true"
+              class="svg-icon"
+            ></span>
+          </span>
+
+          <span class="navi-icon mr-5 _curPointer">
+            <span
+              pTooltip="Delete Role"
+              [inlineSVG]="
+                './assets/media/svg/icons/Communication/Mail-opened.svg'
+              "
+              cacheSVG="true"
+              class="svg-icon"
+            ></span>
+          </span>
+        </div>
+        <div class="font-weight-bold mt-1">Status :</div>
+        <div class="black _textOverflow font-size-sm ml-2">
+          <mat-slide-toggle class="mt-1"></mat-slide-toggle>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p-dialog
+  header="Add Role"
+  modal="true"
+  position="right"
+  [(visible)]="roleModalStatus"
+  class="_smallSizeModal"
+>
+  <app-add-role-modal></app-add-role-modal>
+</p-dialog>

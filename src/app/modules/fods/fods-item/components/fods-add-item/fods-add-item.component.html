@@ -1,0 +1,551 @@
+<mat-tab-group class="p-0">
+  <mat-tab label="Main Details">
+    <div class="row _wid100">
+      <div class="col-xl-6 col-lg-6 col-md-12 col-xs-12 mt-4">
+        <div class="form-group mb-3">
+          <label>Name</label>
+          <div>
+            <input
+              type="text"
+              class="form-control mb-2"
+              name="address1"
+              placeholder="Enter the item name English"
+            />
+
+            <input
+              type="text"
+              class="form-control"
+              name="address1"
+              placeholder="Enter the item name Arabic"
+            />
+
+            <span class="form-text text-muted"
+              >Please enter the item name.</span
+            >
+          </div>
+        </div>
+
+        <div class="form-group mb-3">
+          <label>Description</label>
+          <div>
+            <textarea
+              name="description"
+              placeholder="Enter the item Description English"
+              class="form-control mb-2"
+            ></textarea>
+
+            <textarea
+              name="description"
+              placeholder="Enter the item Description Arabic"
+              class="form-control"
+            ></textarea>
+            <span class="form-text text-muted"
+              >Please enter item Description.</span
+            >
+          </div>
+        </div>
+
+        <div class="form-group mb-3">
+          <label>Price</label>
+          <div>
+            <input
+              name="description"
+              placeholder="Price"
+              class="form-control"
+            />
+            <span class="form-text text-muted">Please enter Price.</span>
+          </div>
+        </div>
+
+        <div class="form-group mb-3">
+          <label>Special Price</label>
+          <div>
+            <input
+              type="text"
+              class="form-control"
+              name="address1"
+              placeholder="Special Price"
+            />
+            <span class="form-text text-muted"
+              >Please enter the Special Price.</span
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xl-6 col-lg-6 col-md-12 col-xs-12 mt-4">
+        <div class="form-group mb-3">
+          <label>Quantity</label>
+          <div>
+            <input type="text" class="form-control" placeholder="Quantity" />
+            <span class="form-text text-muted"
+              >Please enter Contact Number.</span
+            >
+          </div>
+        </div>
+
+        <div class="form-group mb-3">
+          <label>Quantity Unit</label>
+          <div>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Quantity Unit"
+            />
+            <span class="form-text text-muted"
+              >Please enter Quantity Unit.</span
+            >
+          </div>
+        </div>
+
+        <div class="form-group mb-3">
+          <label>Maximum Quantity allowed</label>
+          <div>
+            <input
+              type="text"
+              class="form-control"
+              name="address1"
+              placeholder="Maximum Quantity allowed"
+            />
+            <span class="form-text text-muted"
+              >Please enter Maximum Quantity allowed.</span
+            >
+          </div>
+        </div>
+
+        <div class="form-group mb-3">
+          <label>Item Image</label>
+          <div>
+            <p-fileUpload
+              class="_fileUploadBtn"
+              name="demo[]"
+              url="./upload.php"
+              multiple="multiple"
+              accept="image/*"
+              maxFileSize="1000000"
+              [showUploadButton]="false"
+              [showCancelButton]="false"
+            >
+              <ng-template pTemplate="content">
+                <ul *ngIf="uploadedFiles.length">
+                  <li *ngFor="let file of uploadedFiles">
+                    {{ file.name }} - {{ file.size }} bytes
+                  </li>
+                </ul>
+              </ng-template>
+            </p-fileUpload>
+            <span class="form-text text-muted">Please upload itme image.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <button
+        class="btn btn-primary btn-fixed-height font-weight-bold px-2 px-lg-5 mr-2 _mlauto"
+      >
+        Save
+      </button>
+    </div>
+  </mat-tab>
+  <mat-tab label="Base">
+    <div class="row _wid100">
+      <div class="col-xl-6 col-lg-6 col-md-12 col-xs-12 mt-4">
+        <div class="form-group">
+          <label>Base Name</label>
+          <div>
+            <input
+              type="text"
+              class="form-control"
+              name="address1"
+              placeholder="Base Name"
+            />
+          </div>
+        </div>
+
+        <div>
+          <button
+            class="btn btn-primary btn-fixed-height font-weight-bold px-2 px-lg-5 mr-2 _mlauto"
+          >
+            Add
+          </button>
+        </div>
+      </div>
+
+      <div class="col-xl-6 col-lg-6 col-md-12 col-xs-12 mt-4">
+        <div
+          class="row _wid100 mb-3 p-2 _cardBackgroundColor _curPointer"
+          *ngFor="let base of baseListData; let i = index"
+        >
+          <!-- <div class="row"> -->
+          <div class="col-xl-9">
+            <div class="font-weight-bold mt-1">Base Name :</div>
+            <div class="font-size-sm font-weight-bold mt-1 ml-2">
+              {{ base.baseName }}
+            </div>
+          </div>
+          <div class="col-xl-3 _noPaddding _textEnd _mauto">
+            <span
+              pTooltip="Delete Category"
+              [inlineSVG]="'/assets/media/svg/icons/General/Trash.svg'"
+              cacheSVG="true"
+              class="svg-icon svg-icon-xl _curPointer"
+            ></span>
+          </div>
+          <!-- </div> -->
+        </div>
+      </div>
+    </div>
+  </mat-tab>
+
+  <mat-tab label="AddOn">
+    <div class="row">
+      <div class="col-xl-8">
+        <!-- add on Group heading - begin -->
+        <div class="row">
+          <div class="col-6">
+            <h5 class="mt-5">Add On Group</h5>
+          </div>
+
+          <div class="col-6">
+            <button
+              (click)="actionStatus = 'addOnGroup'"
+              class="btn btn-primary btn-fixed-height font-weight-bold px-2 px-lg-5 mt-3 mb-3 _mlauto"
+            >
+              Add On Group
+            </button>
+          </div>
+        </div>
+        <!-- add on Group heading - end -->
+
+        <div *ngFor="let addOnGroup of addOnGroupList" class="mb-3">
+          <div class="row _wid100 _bodyBackgroundColor">
+            <div class="col-6">
+              <h5 class="mb-3 mt-3">{{ addOnGroup.addOnGroupName }}</h5>
+            </div>
+            <div class="col-6 _textEnd _mauto">
+              <span
+                (click)="actionStatus = 'addOn'"
+                pTooltip="AddOn"
+                [inlineSVG]="'./assets/media/svg/icons/General/Half-star.svg'"
+                cacheSVG="true"
+                class="svg-icon svg-icon-xl _curPointer"
+              ></span>
+
+              <span
+                pTooltip="Delete Category"
+                [inlineSVG]="'/assets/media/svg/icons/General/Trash.svg'"
+                cacheSVG="true"
+                class="svg-icon svg-icon-xl _curPointer"
+              ></span>
+
+              <img
+                class="_curPointer ml-3"
+                (click)="addOnGroup.collapseStatus = !addOnGroup.collapseStatus"
+                [src]="
+                  !addOnGroup.collapseStatus
+                    ? './assets/media/convobot-icon/down-arrow.png'
+                    : './assets/media/convobot-icon/up-arrow.png'
+                "
+              />
+            </div>
+          </div>
+
+          <div *ngIf="!addOnGroup.collapseStatus">
+            <div
+              class="row _wid100"
+              style="border: 1px solid #ecf1f6; padding: 10px"
+              *ngFor="let priceData of addOnGroup.datas"
+            >
+              <div class="col-xl-8 col-lg-9 pb-1 pt-1" style="display: inherit">
+                <div>
+                  <span class="font-weight-bold mb-3">{{
+                    priceData.addOnName
+                  }}</span
+                  ><br />
+                  <span class="text-muted">{{ priceData.price }}</span>
+                </div>
+              </div>
+
+              <!-- <div class="col-xl-3 col-lg-3 pb-1 pt-1" style="display: inherit"> -->
+              <div class="col-xl-4 _noPaddding _textEnd">
+                <span
+                  pTooltip="Delete Category"
+                  [inlineSVG]="'/assets/media/svg/icons/General/Trash.svg'"
+                  cacheSVG="true"
+                  class="svg-icon svg-icon-xl _curPointer"
+                ></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- </div> -->
+        </div>
+      </div>
+
+      <div class="col-xl-4" [ngSwitch]="actionStatus">
+        <div *ngSwitchCase="'addOnGroup'">
+          <h5 class="mt-6 mb-4">Add On Group</h5>
+          <div class="mt3 mb-3">
+            <p-radioButton
+              name="addOnGroupType"
+              value="new"
+              [(ngModel)]="addOnGroupType"
+              label="New"
+            ></p-radioButton>
+
+            <p-radioButton
+              class="ml-4"
+              name="addOnGroupType"
+              value="existing"
+              label="From Existing"
+              [(ngModel)]="addOnGroupType"
+            ></p-radioButton>
+          </div>
+
+          <div *ngIf="addOnGroupType == 'new'">
+            <div class="mb-2">
+              <label>Add On Group Name</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="AddOn Group Name"
+              />
+            </div>
+
+            <div class="mb-2">
+              <label>Ingredient Type</label>
+              <select name="country" class="form-control">
+                <option value="AF">Modifier</option>
+                <option value="AX">Sub course</option>
+              </select>
+            </div>
+
+            <div class="mb-2">
+              <label>Minimum Quantity</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Minimum Quantity"
+              />
+            </div>
+
+            <div class="mb-2">
+              <label>Maximum Quantity</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Maximum Quantity"
+              />
+            </div>
+
+            <div class="mt-3 mb-3">
+              <button
+                class="btn btn-primary btn-fixed-height font-weight-bold px-2 px-lg-5 mr-3 _mlauto"
+              >
+                Add On Group
+              </button>
+            </div>
+          </div>
+
+          <div *ngIf="addOnGroupType == 'existing'">
+            <div class="input-icon h-40px mt-2">
+              <input
+                type="text"
+                class="form-control form-control-lg form-control-solid h-40px"
+                placeholder="Search..."
+                id="generalSearch"
+              />
+              <span>
+                <span
+                  [inlineSVG]="'./assets/media/svg/icons/General/Search.svg'"
+                  cacheSVG="true"
+                  class="svg-icon svg-icon-lg"
+                ></span>
+              </span>
+            </div>
+
+            <div
+              *ngFor="let existingAddOnGroup of existingAddOnGroupList"
+              class="m-4"
+            >
+              <p-checkbox
+                binary="true"
+                [label]="existingAddOnGroup.name"
+                [(ngModel)]="existingAddOnGroup.status"
+              ></p-checkbox>
+            </div>
+
+            <div class="mt-3 mb-3">
+              <button
+                class="btn btn-primary btn-fixed-height font-weight-bold px-2 px-lg-5 mr-3 _mlauto"
+              >
+                Add On Group
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div *ngSwitchCase="'addOn'">
+          <h5 class="mt-6 mb-4">Add On</h5>
+
+          <div class="mt3 mb-3">
+            <p-radioButton
+              name="addOnType"
+              value="new"
+              [(ngModel)]="addOnType"
+              label="New"
+            ></p-radioButton>
+
+            <p-radioButton
+              class="ml-4"
+              name="addOnType"
+              value="existing"
+              label="From Existing"
+              [(ngModel)]="addOnType"
+            ></p-radioButton>
+          </div>
+
+          <div *ngIf="addOnType == 'new'">
+            <div class="mb-2">
+              <label>Add On Name</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="AddOn Group Name"
+              />
+            </div>
+
+            <div class="mb-2">
+              <label>Item Image</label>
+              <div>
+                <p-fileUpload
+                  class="_fileUploadBtn"
+                  name="demo[]"
+                  url="./upload.php"
+                  multiple="multiple"
+                  accept="image/*"
+                  maxFileSize="1000000"
+                  [showUploadButton]="false"
+                  [showCancelButton]="false"
+                >
+                  <ng-template pTemplate="content">
+                    <ul *ngIf="uploadedFiles.length">
+                      <li *ngFor="let file of uploadedFiles">
+                        {{ file.name }} - {{ file.size }} bytes
+                      </li>
+                    </ul>
+                  </ng-template>
+                </p-fileUpload>
+              </div>
+            </div>
+
+            <div class="mb-2">
+              <label>Price</label>
+              <input type="text" class="form-control" placeholder="Price" />
+            </div>
+
+            <div class="mb-3">
+              <label>Description</label>
+              <div>
+                <textarea
+                  name="description"
+                  placeholder="Description"
+                  class="form-control mb-2"
+                ></textarea>
+              </div>
+            </div>
+
+            <div class="mt-3 mb-3">
+              <button
+                class="btn btn-primary btn-fixed-height font-weight-bold px-2 px-lg-5 mr-3 _mlauto"
+              >
+                Add On
+              </button>
+            </div>
+          </div>
+
+          <div *ngIf="addOnType == 'existing'">
+            <div class="input-icon h-40px mt-2">
+              <input
+                type="text"
+                class="form-control form-control-lg form-control-solid h-40px"
+                placeholder="Search..."
+                id="generalSearch"
+              />
+              <span>
+                <span
+                  [inlineSVG]="'./assets/media/svg/icons/General/Search.svg'"
+                  cacheSVG="true"
+                  class="svg-icon svg-icon-lg"
+                ></span>
+              </span>
+            </div>
+
+            <div *ngFor="let addOn of AddOnList" class="m-4">
+              <p-checkbox [label]="addOn.addOnName"></p-checkbox>
+            </div>
+
+            <div class="mt-3 mb-3">
+              <button
+                (click)="actionStatus = 'addOnGroup'"
+                class="btn btn-primary btn-fixed-height font-weight-bold px-2 px-lg-5 mr-3 _mlauto"
+              >
+                Add On
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-tab>
+
+  <mat-tab label="Ingredient">
+    <div class="row _wid100">
+      <div class="col-xl-6 col-lg-6 col-md-12 col-xs-12 mt-4">
+        <div class="form-group">
+          <label>Ingredient Name</label>
+          <div>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Ingredient Name"
+            />
+          </div>
+        </div>
+
+        <div>
+          <button
+            class="btn btn-primary btn-fixed-height font-weight-bold px-2 px-lg-5 mr-2 _mlauto"
+          >
+            Add
+          </button>
+        </div>
+      </div>
+
+      <div class="col-xl-6 col-lg-6 col-md-12 col-xs-12 mt-4">
+        <div
+          class="row _wid100 mb-3 p-2 _cardBackgroundColor _curPointer"
+          *ngFor="let base of baseListData; let i = index"
+        >
+          <!-- <div class="row"> -->
+          <div class="col-xl-9">
+            <div class="font-weight-bold mt-1">Ingredient Name :</div>
+            <div class="font-size-sm font-weight-bold mt-1 ml-2">
+              {{ base.baseName }}
+            </div>
+          </div>
+          <div class="col-xl-3 _noPaddding _textEnd _mauto">
+            <span
+              pTooltip="Delete Category"
+              [inlineSVG]="'/assets/media/svg/icons/General/Trash.svg'"
+              cacheSVG="true"
+              class="svg-icon svg-icon-xl _curPointer"
+            ></span>
+          </div>
+          <!-- </div> -->
+        </div>
+      </div>
+    </div>
+  </mat-tab>
+</mat-tab-group>

@@ -8,6 +8,7 @@ import { SubheaderService } from "src/app/_metronic/partials/layout";
 })
 export class OrderListComponent implements OnInit {
   expandOrder: boolean = false;
+
   orderListData: any = [
     {
       name: "Abdul",

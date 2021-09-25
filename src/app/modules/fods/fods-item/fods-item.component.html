@@ -117,12 +117,8 @@
   modal="true"
   position="right"
   [(visible)]="itemModelStatus"
-  class="_smallSizeModal"
+  class="_largeSizeModal"
 >
-  <mat-tab-group [style.height.px]="totalHeight - 100">
-    <mat-tab label="Main Details"></mat-tab>
-    <mat-tab label="Base"> </mat-tab>
-    <mat-tab label="AddOn"></mat-tab>
-    <mat-tab label="Ingredient"> </mat-tab>
-  </mat-tab-group>
+<app-fods-add-item></app-fods-add-item>
+ 
 </p-dialog>

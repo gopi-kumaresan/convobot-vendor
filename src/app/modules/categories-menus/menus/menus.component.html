@@ -1,54 +1,9 @@
-<div class="row">
-  <div class="col-xl-2 mb-4">
-    <div
-      class="card card-custom _overflowAuto _wid100"
-      [style.height.px]="totalHeight - 104"
-    >
-      <div class="row _wid100">
-        <div class="col-12">
-          <h5 class="mt-9 mb-9">Categories</h5>
-        </div>
-
-        <!-- <div class="col-4 mt-9 _expandIcon">
-          <img
-            (click)="expandCategories = !expandCategories"
-            [src]="
-              !expandCategories
-                ? './assets/media/convobot-icon/down-arrow.png'
-                : './assets/media/convobot-icon/up-arrow.png'
-            "
-          />
-        </div> -->
-      </div>
-
-      <!-- <div class="list list-hover" *ngIf="expandCategories">
-        <div
-          class="list-item hoverable p-2 p-lg-3"
-          [ngClass]="{ _activeRowWithBorder: i == 1 }"
-          *ngFor="let cate of CategoriesList; let i = index"
-        >
-          <div class="d-flex align-items-center">
-            <div class="d-flex flex-column flex-grow-1 mr-2">
-              <span class="mb-1 mt-1 font-weight-bold">{{ cate.name }} </span>
-            </div>
-          </div>
-        </div>
-      </div> -->
-
-      <div class="list list-hover">
-        <div
-          class="list-item hoverable p-2 p-lg-3"
-          [ngClass]="{ _activeRowWithBorder: i == 1 }"
-          *ngFor="let cate of CategoriesList; let i = index"
-        >
-          <div class="d-flex align-items-center">
-            <div class="d-flex flex-column flex-grow-1 mr-2">
-              <span class="mb-1 mt-1 font-weight-bold">{{ cate.name }} </span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+<!-- <div class="row _wid100">
+  <div class="col-xl-2 _searchFilterDiv card card-custom">
+    <select name="country" class="form-control">
+      <option value="AF">Afghanistan</option>
+      <option value="AX">Åland Islands</option>
+    </select>
   </div>
 
   <div class="col-xl-10">
@@ -71,8 +26,91 @@
         </div>
       </div>
     </div>
+  </div>
+</div> -->
+<div class="row">
+  <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 col-xs-12 mt-2">
+    <div class="card card-custom _searchFilterDiv">
+      <select name="country" class="form-control">
+        <option value="AF">Afghanistan</option>
+        <option value="AX">Åland Islands</option>
+      </select>
+    </div>
+  </div>
 
-    <div class="row mt-5">
+  <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12 col-xs-12 mt-2">
+    <!-- <div class="row"> -->
+    <div class="card card-custom _searchFilterDiv">
+      <div class="input-icon h-40px">
+        <input
+          type="text"
+          class="form-control form-control-lg form-control-solid h-40px"
+          placeholder="Search..."
+          id="generalSearch"
+        />
+        <span>
+          <span
+            [inlineSVG]="'./assets/media/svg/icons/General/Search.svg'"
+            cacheSVG="true"
+            class="svg-icon svg-icon-lg"
+          ></span>
+        </span>
+      </div>
+      <!-- </div> -->
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xl-2 mb-4 mt-5">
+    <div
+      class="card card-custom _overflowAuto _wid100"
+      [style.height.px]="totalHeight - 180"
+    >
+      <div class="row _wid100">
+        <div class="col-12">
+          <h5 class="mt-4 mb-2">Categories</h5>
+        </div>
+      </div>
+
+      <div class="list list-hover">
+        <div
+          class="list-item hoverable p-2 p-lg-3"
+          [ngClass]="{ _activeRowWithBorder: i == 1 }"
+          *ngFor="let cate of CategoriesList; let i = index"
+        >
+          <div class="d-flex align-items-center">
+            <div class="d-flex flex-column flex-grow-1 mr-2">
+              <span class="mb-1 mt-1 font-weight-bold">{{ cate.name }} </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xl-10">
+    <!-- <div class="row _searchFilterDiv card card-custom">
+      <div class="col-xl-12 col-lg-12">
+        <div class="input-icon h-40px">
+          <input
+            type="text"
+            class="form-control form-control-lg form-control-solid h-40px"
+            placeholder="Search..."
+            id="generalSearch"
+          />
+          <span>
+            <span
+              [inlineSVG]="'./assets/media/svg/icons/General/Search.svg'"
+              cacheSVG="true"
+              class="svg-icon svg-icon-lg"
+            ></span>
+          </span>
+        </div>
+      </div>
+    </div> -->
+
+    <div class="row _wid100 mt-5">
       <div
         class="card card-custom _overflowAuto _wid100"
         [style.height.px]="totalHeight - 180"
@@ -86,7 +124,7 @@
           >
             <div class="row">
               <div
-                class="col-xl-4 col-lg-12 pb-1 pt-1"
+                class="col-xl-6 col-lg-12 pb-1 pt-1"
                 style="display: inherit"
               >
                 <span
@@ -105,12 +143,12 @@
                 </div>
               </div>
 
-              <div class="col-xl-4 col-lg-12 pb-1 pt-1">
+              <div class="col-xl-6 col-lg-12 pb-1 pt-1">
                 <mat-slide-toggle
                   [(ngModel)]="priceData.status"
                 ></mat-slide-toggle>
               </div>
-              <div class="col-xl-4 col-lg-12 pb-1 pt-1 _textEndStart">
+              <!-- <div class="col-xl-4 col-lg-12 pb-1 pt-1 _textEndStart">
                 <a
                   title="Edit product"
                   class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3"
@@ -135,7 +173,7 @@
                   >
                   </span>
                 </a>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>

@@ -3,10 +3,11 @@ import { CommonModule } from "@angular/common";
 
 import { OrderRoutingModule } from "./order-routing.module";
 import { OrderListComponent } from "./order-list/order-list.component";
-import { MatCardModule } from "@angular/material/card";
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { InlineSVGModule } from "ng-inline-svg";
+
+// UI Components
 import { CRUDTableModule } from "src/app/_metronic/shared/crud-table";
 import {
   NgbModalModule,
@@ -15,9 +16,13 @@ import {
 import { OrderComponent } from "./order.component";
 import { MatListModule } from "@angular/material/list";
 import { MatButtonModule } from "@angular/material/button";
-import {MatTabsModule} from '@angular/material/tabs';
-import {MatBadgeModule} from '@angular/material/badge';
-import {MatExpansionModule} from '@angular/material/expansion';
+import { MatTabsModule } from "@angular/material/tabs";
+import { MatBadgeModule } from "@angular/material/badge";
+import { MatExpansionModule } from "@angular/material/expansion";
+import { TooltipModule } from "primeng-lts/tooltip";
+import { MatCardModule } from "@angular/material/card";
+import { DialogModule } from "primeng-lts/dialog";
+import { TenancyModule } from "../tenancy/tenancy.module";
 
 @NgModule({
   declarations: [OrderListComponent, OrderComponent],
@@ -38,7 +43,9 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatButtonModule,
     MatTabsModule,
     MatBadgeModule,
-    MatExpansionModule
+    MatExpansionModule,
+    TooltipModule,
+    DialogModule,
   ],
 })
 export class OrderModule {}

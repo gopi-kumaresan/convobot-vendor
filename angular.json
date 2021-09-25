@@ -35,7 +35,10 @@
               "src/styles.scss",
               "node_modules/primeicons/primeicons.css",
               "node_modules/primeng-lts/resources/themes/nova-light/theme.css",
-              "node_modules/primeng-lts/resources/primeng.min.css"
+              "node_modules/primeng-lts/resources/primeng.min.css",
+              "node_modules/@fullcalendar/common/main.min.css",
+              "node_modules/@fullcalendar/daygrid/main.min.css",
+              "node_modules/@fullcalendar/timegrid/main.min.css"
             ],
             "scripts": [
               "node_modules/apexcharts/dist/apexcharts.min.js",
@@ -102,7 +105,10 @@
               "src/styles.scss",
               "node_modules/primeicons/primeicons.css",
               "node_modules/primeng-lts/resources/themes/nova-light/theme.css",
-              "node_modules/primeng-lts/resources/primeng.min.css"
+              "node_modules/primeng-lts/resources/primeng.min.css",
+              "node_modules/@fullcalendar/common/main.min.css",
+              "node_modules/@fullcalendar/daygrid/main.min.css",
+              "node_modules/@fullcalendar/timegrid/main.min.css"
             ],
             "scripts": []
           }

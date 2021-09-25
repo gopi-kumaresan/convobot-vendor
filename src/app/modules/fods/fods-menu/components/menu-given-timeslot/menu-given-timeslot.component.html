@@ -1,19 +1,36 @@
-
-
-
 <div class="form-group">
-  <label>Menu Name</label>
-  <input type="text" class="form-control" placeholder="Name" />
-  <span class="form-text text-muted">Please enter the menu name.</span>
+  <label>Days</label>
+  <select name="country" class="form-control">
+    <option value="AX">Sunday</option>
+    <option value="AF">Monday</option>
+    <option value="AX">Tuesday</option>
+    <option value="AX">wednesday</option>
+    <option value="AX">Thursday</option>
+    <option value="AX">Friday</option>
+    <option value="AX">saturday</option>
+  </select>
+  <span class="form-text text-muted">Please select day.</span>
 </div>
 
 <div class="form-group">
-  <label>Item</label>
+  <label>Menu</label>
   <select name="country" class="form-control">
-    <option value="AF">Afghanistan</option>
-    <option value="AX">Åland Islands</option>
+    <option value="AF">French Fries</option>
+    <option value="AX">Plain Sandwich</option>
+    <option value="AX">Grilled Sandwich</option>
+    <option value="AX">Plain Cheese Pizza</option>
+    <option value="AX">Onion Pizza</option>
+    <option value="AX">Lasanana Roll</option>
   </select>
-  <span class="form-text text-muted">Please select item.</span>
+  <span class="form-text text-muted">Please select menu.</span>
+</div>
+
+<div class="form-group">
+  <p-checkbox
+    [(ngModel)]="allDays"
+    [binary]="true"
+    label="All Days"
+  ></p-checkbox>
 </div>
 
 <div class="form-group _timeslot">
@@ -23,6 +40,7 @@
       [style]="{ width: '100%' }"
       [timeOnly]="true"
       inputId="timeonly"
+      [disabled]="allDays"
     ></p-calendar>
   </div>
 
@@ -36,6 +54,7 @@
       [style]="{ width: '100%' }"
       [timeOnly]="true"
       inputId="timeonly"
+      [disabled]="allDays"
     ></p-calendar>
   </div>
   <span class="form-text text-muted">Please fill to timestamp.</span>
