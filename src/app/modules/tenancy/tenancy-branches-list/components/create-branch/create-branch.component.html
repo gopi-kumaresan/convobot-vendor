@@ -1,0 +1,303 @@
+<form [formGroup]="branchCreateForm">
+  <div class="row _wid100">
+    <div class="col-xl-6 col-lg-6 col-md-12 col-xs-12 mt-4">
+      <div class="form-group">
+        <label>Branch name</label>
+
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Branch name"
+          formControlName="branchName"
+        />
+        <div *ngIf="submitted && f.branchName.errors" class="_alertTextColor">
+          <div *ngIf="f.branchName.errors.required">
+            Branch name is required
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Description</label>
+
+        <textarea
+          name="description"
+          placeholder="Description"
+          class="form-control"
+          formControlName="description"
+        ></textarea>
+
+        <div *ngIf="submitted && f.description.errors" class="_alertTextColor">
+          <div *ngIf="f.description.errors.required">
+            Description is required
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-2">
+        <label>Cover image</label>
+        <div>
+          <p-fileUpload
+            class="_fileUploadBtn"
+            name="demo[]"
+            url="./upload.php"
+            multiple="multiple"
+            accept="image/*"
+            maxFileSize="1000000"
+            [showUploadButton]="false"
+            [showCancelButton]="false"
+          >
+            <ng-template pTemplate="content">
+              <ul *ngIf="uploadedFiles.length">
+                <li *ngFor="let file of uploadedFiles">
+                  {{ file.name }} - {{ file.size }} bytes
+                </li>
+              </ul>
+            </ng-template>
+          </p-fileUpload>
+        </div>
+
+        <!-- <div *ngIf="submitted && f.coverImage.errors" class="_alertTextColor">
+          <div *ngIf="f.coverImage.errors.required">
+            Cover image is required
+          </div>
+        </div> -->
+      </div>
+
+      <div class="mb-2">
+        <label>Logo </label>
+        <div>
+          <p-fileUpload
+            class="_fileUploadBtn"
+            name="demo[]"
+            url="./upload.php"
+            multiple="multiple"
+            accept="image/*"
+            maxFileSize="1000000"
+            [showUploadButton]="false"
+            [showCancelButton]="false"
+          >
+            <ng-template pTemplate="content">
+              <ul *ngIf="uploadedFiles.length">
+                <li *ngFor="let file of uploadedFiles">
+                  {{ file.name }} - {{ file.size }} bytes
+                </li>
+              </ul>
+            </ng-template>
+          </p-fileUpload>
+        </div>
+
+        <!-- <div *ngIf="submitted && f.logo.errors" class="_alertTextColor">
+          <div *ngIf="f.logo.errors.required">Logo is required</div>
+        </div> -->
+      </div>
+
+      <div class="form-group">
+        <label>Whats app Mobile Number </label>
+
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Whats app Mobile Number"
+          formControlName="mobileNumber"
+        />
+
+        <div *ngIf="submitted && f.mobileNumber.errors" class="_alertTextColor">
+          <div *ngIf="f.mobileNumber.errors.required">
+            Mobile Number is required
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-6 col-lg-6 col-md-12 col-xs-12 mt-4">
+      <div class="form-group">
+        <label>Country Name</label>
+        <!-- <select
+          name="country"
+          class="form-control"
+          formControlName="countryName"
+        >
+          <option value="" selected>Country Name</option>
+          <option value="country" *ngFor="let country of countryListDatas">
+            {{ country.country_name }}
+          </option>
+        </select> -->
+
+        <div>
+          <p-dropdown
+            [filter]="true"
+            [options]="countryListDatas"
+            formControlName="countryName"
+            optionLabel="country_name"
+            placeholder="Country Name"
+            (onChange)="addressEvent($event, 'country')"
+          ></p-dropdown>
+        </div>
+
+        <div *ngIf="submitted && f.countryName.errors" class="_alertTextColor">
+          <div *ngIf="f.countryName.errors.required">
+            <label>Country Name</label>
+            is required
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>State Name</label>
+
+        <div>
+          <p-dropdown
+            [filter]="true"
+            [options]="stateListData"
+            formControlName="stateName"
+            optionLabel="state_name"
+            placeholder="State Name"
+            (onChange)="addressEvent($event, 'state')"
+          ></p-dropdown>
+        </div>
+
+        <!-- <select name="country" class="form-control" formControlName="stateName">
+          <option value="" selected>State Name</option>
+          <option value="AF">Modifier</option>
+          <option value="AX">Sub course</option>
+        </select> -->
+        <div *ngIf="submitted && f.stateName.errors" class="_alertTextColor">
+          <div *ngIf="f.stateName.errors.required">State Name is required</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>City Name</label>
+
+        <div>
+          <p-dropdown
+            [filter]="true"
+            [options]="cityListData"
+            formControlName="cityName"
+            optionLabel="city_name"
+            placeholder="City Name"
+          ></p-dropdown>
+        </div>
+        <!-- <select name="country" class="form-control" formControlName="cityName">
+          <option value="" selected>City Name</option>
+          <option value="AF">Modifier</option>
+          <option value="AX">Sub course</option>
+        </select> -->
+        <div *ngIf="submitted && f.cityName.errors" class="_alertTextColor">
+          <div *ngIf="f.cityName.errors.required">City Name is required</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Pin code </label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Pin Code"
+          formControlName="pinCode"
+        />
+
+        <div *ngIf="submitted && f.pinCode.errors" class="_alertTextColor">
+          <div *ngIf="f.pinCode.errors.required">Pin code is required</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Order type</label>
+        <div class="mt3 mb-3">
+          <p-radioButton
+            name="orderType"
+            value="pickup"
+            label="Pickup"
+            formControlName="orderType"
+          ></p-radioButton>
+
+          <p-radioButton
+            class="ml-4"
+            name="orderType"
+            value="delivery"
+            label="Delivery"
+            formControlName="orderType"
+          ></p-radioButton>
+
+          <p-radioButton
+            class="ml-4"
+            name="orderType"
+            value="both"
+            label="Both"
+            formControlName="orderType"
+          ></p-radioButton>
+        </div>
+
+        <div *ngIf="submitted && f.orderType.errors" class="_alertTextColor">
+          <div *ngIf="f.orderType.errors.required">Order type is required</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Rider support</label>
+        <div class="mt3 mb-3">
+          <p-radioButton
+            name="riderSupport"
+            value="inhouse"
+            label="Inhouse"
+            formControlName="riderSupport"
+          ></p-radioButton>
+
+          <p-radioButton
+            class="ml-4"
+            name="riderSupport"
+            value="3rd-party"
+            label="3rd-party alone"
+            formControlName="riderSupport"
+          ></p-radioButton>
+
+          <p-radioButton
+            class="ml-4"
+            name="riderSupport"
+            value="both"
+            label="Both"
+            formControlName="riderSupport"
+          ></p-radioButton>
+        </div>
+
+        <div *ngIf="submitted && f.riderSupport.errors" class="_alertTextColor">
+          <div *ngIf="f.riderSupport.errors.required">
+            Rider support is required
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<div class="_mapAGM _mauto">
+  <agm-map [latitude]="51.673858" [longitude]="7.815982">
+    <agm-marker
+      *ngFor="let m of markers; let i = index"
+      (markerClick)="clickedMarker(m.label, i)"
+      [latitude]="m.lat"
+      [longitude]="m.lng"
+      [markerDraggable]="m.draggable"
+      (dragEnd)="markerDragEnd(m, $event)"
+    >
+    </agm-marker>
+  </agm-map>
+</div>
+
+<div>
+  <button
+    (click)="branchCreateion()"
+    class="
+      btn btn-primary btn-fixed-height
+      font-weight-bold
+      px-2 px-lg-5
+      mr-4
+      mt-5
+      _mlauto
+    "
+  >
+    Save
+  </button>
+</div>

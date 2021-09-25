@@ -1,0 +1,101 @@
+<div class="row _wid100">
+  <div class="col-xl-7">
+    <agm-map
+      [style.height.px]="totalHeight - 70"
+      [latitude]="51.673858"
+      [longitude]="7.815982"
+      [agmDrawingManager]="drawing"
+      (mapReady)="testEvents($event)"
+    >
+      <!-- show polygon datas -->
+      <agm-polygon
+        *ngFor="let poly of paths; let i = index"
+        [paths]="poly.latLng"
+      >
+      </agm-polygon>
+
+      <!-- show circle datas -->
+      <agm-circle
+        *ngFor="let circle of circleDatas"
+        [latitude]="circle.lat"
+        [longitude]="circle.lng"
+        [radius]="20000"
+        [fillColor]="'red'"
+      >
+      </agm-circle>
+    </agm-map>
+    <agm-drawing-manager
+      (polygonComplete)="polygonCreated($event)"
+      (circleComplete)="circleCreated($event)"
+      #drawing="agmDrawingManager"
+      [drawingControl]="managerOptions.drawingControl"
+      [circleOptions]="managerOptions.circleOptions"
+      [drawingControlOptions]="managerOptions.drawingControlOptions"
+      [polygonOptions]="managerOptions.polygonOptions"
+      [drawingMode]="managerOptions.drawingMode"
+    >
+    </agm-drawing-manager>
+  </div>
+  <div class="col-xl-5">
+    <div class="row _wid100">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-xs-12 mt-4">
+        <div class="form-group">
+          <label>Delivery area name</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Delivery area name"
+          />
+          <span class="form-text text-muted"
+            >Please enter the delivery area name.</span
+          >
+        </div>
+
+        <div class="form-group">
+          <label>Description</label>
+          <textarea
+            name="description"
+            placeholder="Description"
+            class="form-control"
+          ></textarea>
+          <span class="form-text text-muted">Please enter Description.</span>
+        </div>
+
+        <div class="form-group">
+          <label>Delivery charge type</label>
+          <select name="country" class="form-control">
+            <option value="AF">Free</option>
+            <option value="AX">Paid</option>
+          </select>
+          <span class="form-text text-muted"
+            >Please select delivery charge type.</span
+          >
+        </div>
+
+        <div class="form-group">
+          <label>Delivery charge price</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Delivery charge price"
+          />
+          <span class="form-text text-muted"
+            >Please enter Delivery charge.</span
+          >
+        </div>
+      </div>
+    </div>
+
+    <button
+      class="
+        btn btn-primary btn-fixed-height
+        font-weight-bold
+        px-2 px-lg-5
+        mr-2
+        _mlauto
+      "
+    >
+      Save
+    </button>
+  </div>
+</div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { CdkDragDrop, moveItemInArray } from "@angular/cdk/drag-drop";
 
 @Component({
   selector: "app-create-menu",
@@ -24,11 +25,65 @@ export class CreateMenuComponent implements OnInit {
     { name: "Briyani", status: false },
   ];
 
+  addOnGroupList: any = [
+    {
+      addOnGroupName: "Extra",
+      status: false,
+      collapseStatus: false,
+      datas: [
+        {
+          addOnName: "Extra Cheese (2 Sliders)",
+          price: "BD 1.600",
+          status: true,
+        },
+        {
+          addOnName: "Cheddar Cheese Dip",
+          price: "BD 1.600",
+          status: false,
+        },
+      ],
+    },
+    {
+      addOnGroupName: "Choose Your Beverage",
+      status: false,
+      collapseStatus: false,
+      datas: [
+        {
+          addOnName: "Tea",
+          price: "BD 3.600",
+          status: false,
+        },
+        {
+          addOnName: "Coffee",
+          price: "BD 3.600",
+          status: false,
+        },
+      ],
+    },
+    {
+      addOnGroupName: "Add Sides Salad",
+      status: false,
+      collapseStatus: false,
+      datas: [
+        {
+          addOnName: "Garden Fresh salad",
+          price: "BD 2.600",
+          status: false,
+        },
+        {
+          addOnName: "Grilled Chicken Salad",
+          price: "BD 2.600",
+          status: false,
+        },
+      ],
+    },
+  ];
+
   subCategories: any = [
     {
       title: "Daily Specials",
       status: false,
-      collapseStatus:false,
+      collapseStatus: false,
       datas: [
         {
           sub_categories_name: "Classic Wrap",
@@ -41,7 +96,7 @@ export class CreateMenuComponent implements OnInit {
     {
       title: "Starters",
       status: false,
-      collapseStatus:false,
+      collapseStatus: false,
       datas: [
         {
           sub_categories_name: "Tacos & Strip Box",
@@ -58,7 +113,7 @@ export class CreateMenuComponent implements OnInit {
     {
       title: "Main Course",
       status: false,
-      collapseStatus:false,
+      collapseStatus: false,
       datas: [
         {
           sub_categories_name: "Chips Oman Crispy",
@@ -103,9 +158,9 @@ export class CreateMenuComponent implements OnInit {
     { itemName: "Chips Oman Crispy" },
     { itemName: "Chicken Meal" },
   ];
-  constructor() {}
+  constructor() { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   addNewCategoryFunction(category: string) {
     if (category == "category") {
@@ -114,7 +169,7 @@ export class CreateMenuComponent implements OnInit {
       this.subCategories.unshift({
         title: this.addNewSubCategory,
         status: false,
-        collapseStatus:false,
+        collapseStatus: false,
         datas: [
           {
             sub_categories_name: "Classic Wrap",
@@ -129,5 +184,25 @@ export class CreateMenuComponent implements OnInit {
         ],
       });
     }
+  }
+
+  drop(event: CdkDragDrop<{ title: string; poster: string }[]>) {
+    moveItemInArray(
+      this.subCategories,
+      event.previousIndex,
+      event.currentIndex
+    );
+  }
+  dropOne(
+    event: CdkDragDrop<{ title: string; poster: string }[]>,
+    index: number
+  ) {
+    console.log("index", index);
+
+    moveItemInArray(
+      this.subCategories[index].datas,
+      event.previousIndex,
+      event.currentIndex
+    );
   }
 }

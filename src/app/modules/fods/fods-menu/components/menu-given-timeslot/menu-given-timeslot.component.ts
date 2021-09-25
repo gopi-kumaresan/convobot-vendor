@@ -6,6 +6,7 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./menu-given-timeslot.component.scss"],
 })
 export class MenuGivenTimeslotComponent implements OnInit {
+  allDays: boolean = false;
   constructor() {}
 
   ngOnInit(): void {}

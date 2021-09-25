@@ -1,0 +1,262 @@
+<form [formGroup]="businessForm">
+  <div class="row _wid100">
+    <div class="col-xl-6 col-lg-6 col-md-12 col-xs-12 mt-4">
+      <div class="form-group">
+        <label>Business</label>
+
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Business Name"
+          formControlName="businessName"
+        />
+
+        <div *ngIf="submitted && f.businessName.errors" class="_alertTextColor">
+          <div *ngIf="f.businessName.errors.required">
+            Business Name is required
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Brand Name </label>
+
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Brand Name"
+          formControlName="brandName"
+        />
+        <div *ngIf="submitted && f.brandName.errors" class="_alertTextColor">
+          <div *ngIf="f.brandName.errors.required">Brand Name is required</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Country Name</label>
+        <!-- <select
+          name="country"
+          class="form-control"
+          formControlName="countryName"
+        >
+          <option value="" selected>Country Name</option>
+          <option value="country" *ngFor="let country of countryListDatas">
+            {{ country.country_name }}
+          </option>
+        </select> -->
+        <div>
+          <p-dropdown
+            [filter]="true"
+            [options]="countryListDatas"
+            formControlName="countryName"
+            optionLabel="country_name"
+            placeholder="Country Name"
+            (onChange)="addressEvent($event, 'country')"
+          ></p-dropdown>
+        </div>
+
+        <div *ngIf="submitted && f.countryName.errors" class="_alertTextColor">
+          <div *ngIf="f.countryName.errors.required">
+            <label>Country Name</label>
+            is required
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>State Name</label>
+
+        <div>
+          <p-dropdown
+            [filter]="true"
+            [options]="stateListData"
+            formControlName="stateName"
+            optionLabel="state_name"
+            placeholder="State Name"
+            (onChange)="addressEvent($event, 'state')"
+          ></p-dropdown>
+        </div>
+
+        <!-- <select name="country" class="form-control" formControlName="stateName">
+          <option value="" selected>State Name</option>
+          <option value="AF">Modifier</option>
+          <option value="AX">Sub course</option>
+        </select> -->
+        <div *ngIf="submitted && f.stateName.errors" class="_alertTextColor">
+          <div *ngIf="f.stateName.errors.required">State Name is required</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>City Name</label>
+
+        <div>
+          <p-dropdown
+            [filter]="true"
+            [options]="cityListData"
+            formControlName="cityName"
+            optionLabel="city_name"
+            placeholder="City Name"
+          ></p-dropdown>
+        </div>
+        <!-- <select name="country" class="form-control" formControlName="cityName">
+          <option value="" selected>City Name</option>
+          <option value="AF">Modifier</option>
+          <option value="AX">Sub course</option>
+        </select> -->
+        <div *ngIf="submitted && f.cityName.errors" class="_alertTextColor">
+          <div *ngIf="f.cityName.errors.required">City Name is required</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Pin code </label>
+
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Pin Code"
+          formControlName="pincode"
+        />
+        <div *ngIf="submitted && f.pincode.errors" class="_alertTextColor">
+          <div *ngIf="f.pincode.errors.required">Pin Code is required</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-6 col-lg-6 col-md-12 col-xs-12 mt-4">
+      <div class="form-group">
+        <label>Address 1 </label>
+
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Address 1"
+          formControlName="address1"
+        />
+        <div *ngIf="submitted && f.address1.errors" class="_alertTextColor">
+          <div *ngIf="f.address1.errors.required">Address 1 is required</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Address 2 </label>
+
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Address 2"
+          formControlName="address2"
+        />
+        <div *ngIf="submitted && f.address2.errors" class="_alertTextColor">
+          <div *ngIf="f.address2.errors.required">Address 2 is required</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>CIN </label>
+
+        <input
+          type="text"
+          class="form-control"
+          placeholder="CIN"
+          formControlName="cin"
+        />
+        <div *ngIf="submitted && f.cin.errors" class="_alertTextColor">
+          <div *ngIf="f.cin.errors.required">CIN is required</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Taxation</label>
+
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Taxation"
+          formControlName="taxation"
+        />
+        <div *ngIf="submitted && f.taxation.errors" class="_alertTextColor">
+          <div *ngIf="f.taxation.errors.required">Taxation is required</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Tax Name</label>
+
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Tax Name"
+          formControlName="taxName"
+        />
+        <div *ngIf="submitted && f.taxName.errors" class="_alertTextColor">
+          <div *ngIf="f.taxName.errors.required">Tax Name is required</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Tax Percentage</label>
+
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Tax Percentage"
+          formControlName="taxPercentage"
+        />
+        <div
+          *ngIf="submitted && f.taxPercentage.errors"
+          class="_alertTextColor"
+        >
+          <div *ngIf="f.taxPercentage.errors.required">
+            Tax Percentage is required
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-2">
+        <label>Add Document</label>
+        <div>
+          <p-fileUpload
+            class="_fileUploadBtn"
+            name="demo[]"
+            url="./upload.php"
+            multiple="multiple"
+            accept="image/*"
+            maxFileSize="1000000"
+            [showUploadButton]="false"
+            [showCancelButton]="false"
+          >
+            <ng-template pTemplate="content">
+              <ul *ngIf="uploadedFiles.length">
+                <li *ngFor="let file of uploadedFiles">
+                  {{ file.name }} - {{ file.size }} bytes
+                </li>
+              </ul>
+            </ng-template>
+          </p-fileUpload>
+        </div>
+
+        <!-- <div *ngIf="submitted && f.addDocument.errors" class="_alertTextColor">
+          <div *ngIf="f.addDocument.errors.required">
+            Add Document is required
+          </div>
+        </div> -->
+      </div>
+    </div>
+  </div>
+  <div>
+    <button
+      (click)="businessDetailsSumbit()"
+      class="
+        btn btn-primary btn-fixed-height
+        font-weight-bold
+        px-2 px-lg-5
+        mr-2
+        _mlauto
+      "
+    >
+      Save
+    </button>
+  </div>
+</form>

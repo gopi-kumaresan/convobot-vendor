@@ -21,6 +21,13 @@ import { ToggleButtonModule } from "primeng-lts/togglebutton";
 import { CalendarModule } from "primeng-lts/calendar";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatSlideToggleModule } from "@angular/material/slide-toggle";
+import { TooltipModule } from "primeng-lts/tooltip";
+import { MatStepperModule } from "@angular/material/stepper";
+import { MatButtonModule } from "@angular/material/button";
+import { TableModule } from "primeng-lts/table";
+import { CheckboxModule } from "primeng-lts/checkbox";
+import { RadioButtonModule } from "primeng-lts/radiobutton";
+import { DropdownModule } from "primeng-lts/dropdown";
 
 // Components
 import { TenancyBranchesListComponent } from "./tenancy-branches-list/tenancy-branches-list.component";
@@ -32,6 +39,14 @@ import { MenuTabComponent } from "./tenancy-branches-list/components/menu-tab/me
 import { EarningReportTabComponent } from "./tenancy-branches-list/components/earning-report-tab/earning-report-tab.component";
 import { BranchProfileTabComponent } from "./tenancy-branches-list/components/branch-profile-tab/branch-profile-tab.component";
 import { BranchConfigurationTabComponent } from "./tenancy-branches-list/components/branch-configuration-tab/branch-configuration-tab.component";
+import { TenancyUsersListComponent } from "./tenancy-users-list/tenancy-users-list.component";
+import { AddTenancyUserComponent } from "./tenancy-users-list/components/add-tenancy-user/add-tenancy-user.component";
+import { UserDetailsViewComponent } from "./tenancy-users-list/components/user-details-view/user-details-view.component";
+import { TenancyRBACListComponent } from "./tenancy-rbac-list/tenancy-rbac-list.component";
+import { AddRoleModalComponent } from "./tenancy-rbac-list/components/add-role-modal/add-role-modal.component";
+import { BusinessDetailsComponent } from "./tenancy-branches-list/components/business-details/business-details.component";
+import { CreateBranchComponent } from "./tenancy-branches-list/components/create-branch/create-branch.component";
+import { AgmCoreModule } from "@agm/core";
 
 @NgModule({
   declarations: [
@@ -50,6 +65,13 @@ import { BranchConfigurationTabComponent } from "./tenancy-branches-list/compone
     EarningReportTabComponent,
     BranchProfileTabComponent,
     BranchConfigurationTabComponent,
+    TenancyUsersListComponent,
+    AddTenancyUserComponent,
+    UserDetailsViewComponent,
+    TenancyRBACListComponent,
+    AddRoleModalComponent,
+    BusinessDetailsComponent,
+    CreateBranchComponent,
   ],
   imports: [
     CommonModule,
@@ -65,6 +87,18 @@ import { BranchConfigurationTabComponent } from "./tenancy-branches-list/compone
     CustomerViewDetailsModule,
     MatSidenavModule,
     MatSlideToggleModule,
+    TooltipModule,
+    MatStepperModule,
+    MatButtonModule,
+    TableModule,
+    CheckboxModule,
+    RadioButtonModule,
+    DropdownModule,
+    AgmCoreModule.forRoot({
+      apiKey: "AIzaSyBRfJhOzDidLI8Kk8q7DcFkmhA3HmoOI64",
+      libraries: ["places", "drawing", "geometry"],
+    }),
   ],
+  exports: [BusinessDetailsComponent, CreateBranchComponent],
 })
 export class TenancyModule {}

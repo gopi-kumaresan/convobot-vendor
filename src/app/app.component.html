@@ -1,2 +1,48 @@
+<p-toast position="top-right"></p-toast>
+<ngx-spinner
+  bdColor="rgba(0, 0, 0, 0.6)"
+  template="<img src='./assets/media/convobot-icon/convobot-logo/loader.gif' />"
+  [fullScreen]="true"
+></ngx-spinner>
+
+<p-dialog
+  class="_venderOnboardModal"
+  [style]="{ width: '60vw' }"
+  [closable]="false"
+  modal="true"
+  position="center"
+  [(visible)]="vendorOnboardModelStatus"
+>
+  <div class="_textCenter mt-6 _welcomeLogo" *ngIf="!welcomeMsgStatus">
+    <img src="/assets/media/stcok-900x600/3.jpg" />
+    <h5 class="mt-6 mb-3">Welcome to Convobot360</h5>
+
+    <p class="mt-6 mb-3 _textJustify">
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+      Lorem Ipsum has been the industry's standard dummy text ever since the
+      1500s, when an unknown printer took a galley of type and scrambled it to
+      make a type specimen book. It has survived not only five centuries, but
+      also the leap into electronic typesetting.
+    </p>
+
+    <button
+      class="btn btn-primary font-weight-bold px-2 px-lg-5 mt-10"
+      (click)="welcomeMsgStatus = true"
+    >
+      Let's go!
+    </button>
+  </div>
+
+  <mat-tab-group class="p-0" *ngIf="welcomeMsgStatus">
+    <mat-tab label="Business Details">
+      <app-business-details></app-business-details>
+    </mat-tab>
+
+    <mat-tab label="Branch creation">
+      <app-create-branch></app-create-branch>
+    </mat-tab>
+  </mat-tab-group>
+</p-dialog>
+
 <app-splash-screen></app-splash-screen>
 <router-outlet></router-outlet>

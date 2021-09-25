@@ -1,3 +1,17 @@
-::ng-deep ._timeslot  .ui-inputtext {
+::ng-deep ._timeslot .ui-inputtext {
   width: 100%;
+}
+
+._bodyBackgroundColor img {
+  display: inline-block;
+  // margin-left: 5px;
+}
+
+._bodyBackgroundColor h5 {
+  display: inline-block;
+  margin-left: 3px;
+}
+
+._cursorMove {
+  cursor: move;
 }

@@ -4,7 +4,7 @@
 }
 
 ._searchFilterDiv input {
-  width: 30%;
+  width: 40%;
 }
 
 ._textEndStart {
@@ -70,18 +70,9 @@
   ._textEndStart {
     text-align: start;
   }
-
-  // ._filterLabel {
-  //   margin-top: 10px;
-  // }
 }
-@media only screen and (max-width: 1199px) {
-  ._expandIcon {
-    display: inline-block;
-    cursor: pointer;
-  }
-
-  ._categoriesCard {
-    height: auto;
+@media only screen and (max-width: 650px) {
+  ._searchFilterDiv input {
+    width: 80%;
   }
 }

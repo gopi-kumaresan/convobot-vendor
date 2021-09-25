@@ -3,6 +3,8 @@ import { Routes, RouterModule } from "@angular/router";
 import { TenancyComponent } from "./tenancy.component";
 import { TenancyRestaurentComponent } from "./tenancy-restaurent/tenancy-restaurent.component";
 import { TenancyBranchesListComponent } from "./tenancy-branches-list/tenancy-branches-list.component";
+import { TenancyUsersListComponent } from "./tenancy-users-list/tenancy-users-list.component";
+import { TenancyRBACListComponent } from "./tenancy-rbac-list/tenancy-rbac-list.component";
 
 const routes: Routes = [
   {
@@ -16,6 +18,14 @@ const routes: Routes = [
       {
         path: "tenancy-branch",
         component: TenancyBranchesListComponent,
+      },
+      {
+        path: "tenancy-user",
+        component: TenancyUsersListComponent,
+      },
+      {
+        path: "tenancy-rbac",
+        component: TenancyRBACListComponent,
       },
       // {
       //   path: "tenancy-branch-details",

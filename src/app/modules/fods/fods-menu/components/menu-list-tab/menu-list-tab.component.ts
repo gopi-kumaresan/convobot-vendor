@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { EventSettingsModel } from "@syncfusion/ej2-schedule";
 
 @Component({
   selector: "app-menu-list-tab",
@@ -7,7 +8,20 @@ import { Component, OnInit } from "@angular/core";
 })
 export class MenuListTabComponent implements OnInit {
   createMenuModelStatus: boolean = false;
-  
+
+  //  syncfucion schedule calender
+  public eventSettings: EventSettingsModel = {
+    dataSource: [
+      {
+        Id: 1,
+        Subject: "Paris",
+        StartTime: new Date(2018, 1, 15, 9, 0),
+        EndTime: new Date(2018, 1, 15, 10, 0),
+      },
+    ],
+  };
+  public selectedDate: Date = new Date(2018, 1, 15);
+
   menuListData: any = [
     {
       menuName: "French Fries",

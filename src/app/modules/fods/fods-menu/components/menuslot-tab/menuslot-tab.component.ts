@@ -1,7 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-// import dayGridPlugin from "@fullcalendar/daygrid";
-// import timeGridPlugin from "@fullcalendar/timegrid";
-// import interactionPlugin from "@fullcalendar/interaction";
+import { EventSettingsModel } from "@syncfusion/ej2-schedule";
 
 @Component({
   selector: "app-menuslot-tab",
@@ -11,38 +9,317 @@ import { Component, OnInit } from "@angular/core";
 export class MenuslotTabComponent implements OnInit {
   addTimeslotModelStatus: boolean = false;
 
-  events: any[] = [
-    {
-      id: 1,
-      title: "All Day Event",
-      start: "2017-02-01",
-    },
-    {
-      id: 2,
-      title: "Long Event",
-      start: "2017-02-07",
-      end: "2017-02-10",
-    },
-    {
-      id: 3,
-      title: "Repeating Event",
-      start: "2017-02-09T16:00:00",
-    },
-  ];
-
-  options: any;
+  //  syncfucion schedule calender
+  public eventSettings: EventSettingsModel = {
+    dataSource: [
+      {
+        Id: 1,
+        Subject: "RUSSIA vs SAUDI ARABIA",
+        Description: "Group A",
+        StartTime: new Date(2018, 5, 14, 15, 0),
+        EndTime: new Date(2018, 5, 14, 17, 0),
+        StartTimezone: "Europe/Moscow",
+        EndTimezone: "Europe/Moscow",
+        City: "Moscow",
+        CategoryColor: "#1aaa55",
+        GroupId: 1,
+      },
+      {
+        Id: 2,
+        Subject: "EGYPT vs URUGUAY",
+        Description: "Group A",
+        StartTime: new Date(2018, 5, 15, 12, 0),
+        EndTime: new Date(2018, 5, 15, 14, 0),
+        StartTimezone: "Asia/Yekaterinburg",
+        EndTimezone: "Asia/Yekaterinburg",
+        City: "Ekaterinburg",
+        CategoryColor: "#1aaa55",
+        GroupId: 1,
+      },
+      {
+        Id: 3,
+        Subject: "MOROCCO vs IR IRAN",
+        Description: "Group B",
+        StartTime: new Date(2018, 5, 15, 15, 0),
+        EndTime: new Date(2018, 5, 15, 17, 0),
+        StartTimezone: "Europe/Moscow",
+        EndTimezone: "Europe/Moscow",
+        City: "Saint Petersburg",
+        CategoryColor: "#357cd2",
+        GroupId: 2,
+      },
+      {
+        Id: 4,
+        Subject: "PORTUGAL vs SPAIN",
+        Description: "Group B",
+        StartTime: new Date(2018, 5, 15, 18, 0),
+        EndTime: new Date(2018, 5, 15, 20, 0),
+        StartTimezone: "Europe/Moscow",
+        EndTimezone: "Europe/Moscow",
+        City: "Sochi",
+        CategoryColor: "#357cd2",
+        GroupId: 2,
+      },
+      {
+        Id: 5,
+        Subject: "FRANCE vs AUSTRALIA",
+        Description: "Group C",
+        StartTime: new Date(2018, 5, 16, 10, 0),
+        EndTime: new Date(2018, 5, 16, 12, 0),
+        StartTimezone: "Europe/Moscow",
+        EndTimezone: "Europe/Moscow",
+        City: "Kazan",
+        CategoryColor: "#7fa900",
+        GroupId: 3,
+      },
+      {
+        Id: 6,
+        Subject: "ARGENTINA vs ICELAND",
+        Description: "Group D",
+        StartTime: new Date(2018, 5, 16, 13, 0),
+        EndTime: new Date(2018, 5, 16, 15, 0),
+        StartTimezone: "Europe/Moscow",
+        EndTimezone: "Europe/Moscow",
+        City: "Moscow",
+        CategoryColor: "#ea7a57",
+        GroupId: 4,
+      },
+      {
+        Id: 7,
+        Subject: "PERU vs DENMARK",
+        Description: "Group C",
+        StartTime: new Date(2018, 5, 16, 16, 0),
+        EndTime: new Date(2018, 5, 16, 18, 0),
+        StartTimezone: "Europe/Moscow",
+        EndTimezone: "Europe/Moscow",
+        City: "Saransk",
+        CategoryColor: "#7fa900",
+        GroupId: 3,
+      },
+      {
+        Id: 8,
+        Subject: "CROATIA vs NIGERIA",
+        Description: "Group D",
+        StartTime: new Date(2018, 5, 16, 19, 0),
+        EndTime: new Date(2018, 5, 16, 21, 0),
+        StartTimezone: "Europe/Kaliningrad",
+        EndTimezone: "Europe/Kaliningrad",
+        City: "Kaliningrad",
+        CategoryColor: "#ea7a57",
+        GroupId: 4,
+      },
+      {
+        Id: 9,
+        Subject: "COSTA RICA vs SERBIA",
+        Description: "Group E",
+        StartTime: new Date(2018, 5, 17, 12, 0),
+        EndTime: new Date(2018, 5, 17, 14, 0),
+        StartTimezone: "Europe/Samara",
+        EndTimezone: "Europe/Samara",
+        City: "Samara",
+        CategoryColor: "#00bdae",
+        GroupId: 5,
+      },
+      {
+        Id: 10,
+        Subject: "GERMANY vs MEXICO",
+        Description: "Group F",
+        StartTime: new Date(2018, 5, 17, 15, 0),
+        EndTime: new Date(2018, 5, 17, 17, 0),
+        StartTimezone: "Europe/Moscow",
+        EndTimezone: "Europe/Moscow",
+        City: "Moscow",
+        CategoryColor: "#f57f17",
+        GroupId: 6,
+      },
+      {
+        Id: 11,
+        Subject: "BRAZIL vs SWITZERLAND",
+        Description: "Group E",
+        StartTime: new Date(2018, 5, 17, 18, 0),
+        EndTime: new Date(2018, 5, 17, 20, 0),
+        StartTimezone: "Europe/Moscow",
+        EndTimezone: "Europe/Moscow",
+        City: "Rostov-On-Don",
+        CategoryColor: "#00bdae",
+        GroupId: 5,
+      },
+      {
+        Id: 12,
+        Subject: "SWEDEN vs KOREA REPUBLIC",
+        Description: "Group F",
+        StartTime: new Date(2018, 5, 18, 12, 0),
+        EndTime: new Date(2018, 5, 18, 14, 0),
+        StartTimezone: "Europe/Moscow",
+        EndTimezone: "Europe/Moscow",
+        City: "Nizhny Novgorod",
+        CategoryColor: "#f57f17",
+        GroupId: 6,
+      },
+      {
+        Id: 13,
+        Subject: "BELGIUM vs PANAMA",
+        Description: "Group G",
+        StartTime: new Date(2018, 5, 18, 15, 0),
+        EndTime: new Date(2018, 5, 18, 17, 0),
+        StartTimezone: "Europe/Moscow",
+        EndTimezone: "Europe/Moscow",
+        City: "Sochi",
+        CategoryColor: "#8e24aa",
+        GroupId: 7,
+      },
+      {
+        Id: 14,
+        Subject: "TUNISIA vs ENGLAND",
+        Description: "Group G",
+        StartTime: new Date(2018, 5, 18, 18, 0),
+        EndTime: new Date(2018, 5, 18, 20, 0),
+        StartTimezone: "Europe/Volgograd",
+        EndTimezone: "Europe/Volgograd",
+        City: "Volgograd",
+        CategoryColor: "#8e24aa",
+        GroupId: 7,
+      },
+      {
+        Id: 15,
+        Subject: "COLOMBIA vs JAPAN",
+        Description: "Group H",
+        StartTime: new Date(2018, 5, 19, 12, 0),
+        EndTime: new Date(2018, 5, 19, 14, 0),
+        StartTimezone: "Europe/Moscow",
+        EndTimezone: "Europe/Moscow",
+        City: "Saransk",
+        CategoryColor: "#7fa900",
+        GroupId: 8,
+      },
+      {
+        Id: 16,
+        Subject: "POLAND vs SENEGAL",
+        Description: "Group H",
+        StartTime: new Date(2018, 5, 19, 15, 0),
+        EndTime: new Date(2018, 5, 19, 17, 0),
+        StartTimezone: "Europe/Moscow",
+        EndTimezone: "Europe/Moscow",
+        City: "Moscow",
+        CategoryColor: "#7fa900",
+        GroupId: 8,
+      },
+      {
+        Id: 17,
+        Subject: "RUSSIA vs EGYPT",
+        Description: "Group A",
+        StartTime: new Date(2018, 5, 19, 18, 0),
+        EndTime: new Date(2018, 5, 19, 20, 0),
+        StartTimezone: "Europe/Moscow",
+        EndTimezone: "Europe/Moscow",
+        City: "Saint Petersburg",
+        CategoryColor: "#1aaa55",
+        GroupId: 1,
+      },
+      {
+        Id: 18,
+        Subject: "PORTUGAL vs MOROCCO",
+        Description: "Group B",
+        StartTime: new Date(2018, 5, 20, 12, 0),
+        EndTime: new Date(2018, 5, 20, 14, 0),
+        StartTimezone: "Europe/Moscow",
+        EndTimezone: "Europe/Moscow",
+        City: "Rostov-On-Don",
+        CategoryColor: "#357cd2",
+        GroupId: 2,
+      },
+      {
+        Id: 19,
+        Subject: "URUGUAY vs SAUDI ARABIA",
+        Description: "Group A",
+        StartTime: new Date(2018, 5, 20, 15, 0),
+        EndTime: new Date(2018, 5, 20, 17, 0),
+        StartTimezone: "Europe/Moscow",
+        EndTimezone: "Europe/Moscow",
+        City: "Moscow",
+        CategoryColor: "#1aaa55",
+        GroupId: 1,
+      },
+      {
+        Id: 20,
+        Subject: "IR IRAN vs SPAIN",
+        Description: "Group B",
+        StartTime: new Date(2018, 5, 20, 18, 0),
+        EndTime: new Date(2018, 5, 20, 20, 0),
+        StartTimezone: "Europe/Moscow",
+        EndTimezone: "Europe/Moscow",
+        City: "Kazan",
+        CategoryColor: "#357cd2",
+        GroupId: 2,
+      },
+      {
+        Id: 21,
+        Subject: "DENMARK vs AUSTRALIA",
+        Description: "Group C",
+        StartTime: new Date(2018, 5, 21, 12, 0),
+        EndTime: new Date(2018, 5, 21, 14, 0),
+        StartTimezone: "Europe/Samara",
+        EndTimezone: "Europe/Samara",
+        City: "Samara",
+        CategoryColor: "#7fa900",
+        GroupId: 3,
+      },
+      {
+        Id: 22,
+        Subject: "FRANCE vs PERU",
+        Description: "Group D",
+        StartTime: new Date(2018, 5, 21, 15, 0),
+        EndTime: new Date(2018, 5, 21, 17, 0),
+        StartTimezone: "Asia/Yekaterinburg",
+        EndTimezone: "Asia/Yekaterinburg",
+        City: "Ekaterinburg",
+        CategoryColor: "#ea7a57",
+        GroupId: 4,
+      },
+      {
+        Id: 23,
+        Subject: "ARGENTINA vs CROATIA",
+        Description: "Group D",
+        StartTime: new Date(2018, 5, 21, 18, 0),
+        EndTime: new Date(2018, 5, 21, 20, 0),
+        StartTimezone: "Europe/Moscow",
+        EndTimezone: "Europe/Moscow",
+        City: "Nizhny Novgorod",
+        CategoryColor: "#ea7a57",
+        GroupId: 4,
+      },
+      {
+        Id: 24,
+        Subject: "BRAZIL vs COSTA RICA",
+        Description: "Group E",
+        StartTime: new Date(2018, 5, 22, 12, 0),
+        EndTime: new Date(2018, 5, 22, 14, 0),
+        StartTimezone: "Europe/Moscow",
+        EndTimezone: "Europe/Moscow",
+        City: "Saint Petersburg",
+        CategoryColor: "#00bdae",
+        GroupId: 5,
+      },
+    ],
+  };
+  public selectedDate: Date = new Date(2018, 1, 15);
 
   constructor() {}
 
-  ngOnInit(): void {
-    // this.options = {
-    //   plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
-    //   defaultDate: "2017-02-01",
-    //   header: {
-    //     left: "prev,next",
-    //     center: "title",
-    //     right: "dayGridMonth,timeGridWeek,timeGridDay",
-    //   },
-    // };
-  }
+  ngOnInit(): void {}
+
+  // onEventRendered(args: EventRenderedArgs): void {
+  //   console.log(
+  //     "It will triggered before each of the event getting rendered on the scheduler user interface."
+  //   );
+  // }
+
+  // onActionBegin(args: ActionEventArgs): void {
+  //   console.log("args", args);
+  //   if (args.requestType === "eventCreate") {
+  //     console.log(
+  //       "It will triggered when new event is rendered on the scheduler user interface."
+  //     );
+  //   }
+  // }
 }

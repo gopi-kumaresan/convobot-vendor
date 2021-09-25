@@ -1,0 +1,198 @@
+<!-- Filter and search div begin -->
+<div class="mb-4 _searchFilterDiv card card-custom">
+  <div class="row">
+    <div class="col-xl-4 col-lg-12">
+      <div class="input-icon h-40px">
+        <input
+          type="text"
+          class="form-control form-control-lg form-control-solid h-40px mt-2"
+          placeholder="Search..."
+          id="generalSearch"
+        />
+        <span>
+          <span
+            [inlineSVG]="'./assets/media/svg/icons/General/Search.svg'"
+            cacheSVG="true"
+            class="svg-icon svg-icon-lg"
+          ></span>
+        </span>
+      </div>
+    </div>
+    <div class="col-xl-8 col-lg-12">
+      <div class="_filterLabel">
+        <button
+          class="
+            btn btn-primary btn-fixed-height
+            font-weight-bold
+            px-2 px-lg-5
+            mr-2
+            _filterButton
+          "
+        >
+          &nbsp;&nbsp;&nbsp;&nbsp;ALL&nbsp;&nbsp;&nbsp;&nbsp;
+        </button>
+
+        <button
+          matBadge="1"
+          matBadgeSize="medium"
+          class="
+            btn
+            _filterInactiveButton
+            btn-fixed-height
+            font-weight-bold
+            px-2 px-lg-5
+            mr-2
+            _filterButton
+            _textColor
+          "
+        >
+          &nbsp;&nbsp;&nbsp;&nbsp;New&nbsp;&nbsp;&nbsp;&nbsp;
+        </button>
+        <button
+          matBadge="3"
+          matBadgeSize="medium"
+          class="
+            btn
+            _filterInactiveButton
+            btn-fixed-height
+            font-weight-bold
+            px-2 px-lg-5
+            mr-2
+            _filterButton
+          "
+        >
+          Preparing
+        </button>
+        <button
+          matBadge="5"
+          matBadgeSize="medium"
+          class="
+            btn
+            _filterInactiveButton
+            btn-fixed-height
+            font-weight-bold
+            px-2 px-lg-5
+            mr-2
+            _filterButton
+          "
+        >
+          &nbsp;&nbsp;Ready&nbsp;&nbsp;
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Filter and search div end -->
+
+<!--begin::Body-->
+<div class="card card-custom">
+  <div class="p-4 _overflowAuto" [style.height.px]="totalHeight - 180">
+    <div class="mb-2">
+      <button
+        (click)="userModalStatus = true"
+        class="
+          btn btn-primary btn-fixed-height
+          font-weight-bold
+          px-2 px-lg-5
+          mr-3
+          _mlauto
+        "
+      >
+        Add User
+      </button>
+    </div>
+
+    <div
+      class="row _wid100 mb-3 _cardBackgroundColor"
+      *ngFor="let branch of branchListData; let i = index"
+    >
+      <div class="col-xl-4 p-2">
+        <div class="font-weight-bold mt-1">Name :</div>
+        <div class="font-size-sm font-weight-bold mt-1 ml-2">
+          {{ branch.name }}
+        </div>
+        <div class="font-weight-bold mt-1">Phone Number :</div>
+        <div class="black _textOverflow mt-1 font-size-sm ml-2">
+          {{ branch.mobile_number }}
+        </div>
+      </div>
+
+      <div class="col-xl-4 p-2">
+        <div class="font-weight-bold mt-1">Branches :</div>
+        <div class="font-size-sm mt-1 ml-2">
+          {{ branch.branch_name }}
+        </div>
+        <div class="font-weight-bold mt-1">Role :</div>
+        <div class="black _textOverflow mt-1 font-size-sm ml-2">
+          {{ branch.role }}
+        </div>
+      </div>
+
+      <div class="col-xl-4 p-2">
+        <div class="font-weight-bold mt-1">Actions :</div>
+        <div class="font-size-sm mt-1 ml-2">
+          <span
+            class="navi-icon mr-5 _curPointer"
+            (click)="userViweMoalStatus = true"
+          >
+            <span
+              pTooltip="View user"
+              [inlineSVG]="
+                './assets/media/svg/icons/Communication/Mail-opened.svg'
+              "
+              cacheSVG="true"
+              class="svg-icon"
+            ></span>
+          </span>
+
+          <span class="navi-icon mr-5 _curPointer">
+            <span
+              pTooltip="Edit user"
+              [inlineSVG]="
+                './assets/media/svg/icons/Communication/Mail-opened.svg'
+              "
+              cacheSVG="true"
+              class="svg-icon"
+            ></span>
+          </span>
+
+          <span class="navi-icon mr-5 _curPointer">
+            <span
+              pTooltip="Delete user"
+              [inlineSVG]="
+                './assets/media/svg/icons/Communication/Mail-opened.svg'
+              "
+              cacheSVG="true"
+              class="svg-icon"
+            ></span>
+          </span>
+        </div>
+        <div class="font-weight-bold mt-1">Status :</div>
+        <div class="black _textOverflow font-size-sm ml-2">
+          <mat-slide-toggle class="mt-1"></mat-slide-toggle>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--begin::End-->
+
+<p-dialog
+  header="Add User"
+  modal="true"
+  position="right"
+  [(visible)]="userModalStatus"
+  class="_smallSizeModal"
+>
+  <app-add-tenancy-user></app-add-tenancy-user>
+</p-dialog>
+
+<p-dialog
+  header="User View"
+  modal="true"
+  position="right"
+  [(visible)]="userViweMoalStatus"
+  class="_smallSizeModal"
+>
+  <app-user-details-view></app-user-details-view>
+</p-dialog>

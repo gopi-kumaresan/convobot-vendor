@@ -3,6 +3,7 @@ import { Routes, RouterModule } from "@angular/router";
 import { FodsComponent } from "./fods.component";
 import { FodsMenuComponent } from "./fods-menu/fods-menu.component";
 import { FodsItemComponent } from './fods-item/fods-item.component';
+import { DeliveryAreasViewComponent } from "./delivery-areas-view/delivery-areas-view.component";
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
       {
         path: "item",
         component: FodsItemComponent,
+      },
+      {
+        path: "delivery-area-view",
+        component: DeliveryAreasViewComponent,
       },
       // {
       //   path: "tenancy-branch",
@@ -63,4 +68,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class FodsRoutingModule {}
+export class FodsRoutingModule { }

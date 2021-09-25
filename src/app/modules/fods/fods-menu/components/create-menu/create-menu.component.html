@@ -1,8 +1,6 @@
-<div>
-  <div class="mb-2 col-xl-3 col-lg-3 col-md-3 col-sm-12 col-xs-12">
-    <label>Menu Name</label>
-    <input type="text" class="form-control" placeholder="Menu Name" />
-  </div>
+<div class="mb-2 col-xl-5 col-lg-5 col-md-5 col-sm-12 col-xs-12 _singleLine">
+  <label style="width: 140px" class="_mauto">Menu Name</label>
+  <input type="text" class="form-control" placeholder="Menu Name" />
 </div>
 
 <div class="row">
@@ -61,86 +59,114 @@
     </div>
   </div>
 
-  <div class="col-xl-6">
+  <div class="col-xl-5">
     <h5 class="mt-2 mb-4">Item</h5>
 
-    <div *ngFor="let subCate of subCategories" class="mb-3">
-      <div class="row _wid100 _bodyBackgroundColor">
-        <div class="col-6">
-          <h5 class="mb-3 mt-3">{{ subCate.title }}</h5>
-        </div>
-        <div class="col-6 _textEnd _mauto">
-          <span
-            (click)="actionStatus = 'item'"
-            pTooltip="Add Item"
-            [inlineSVG]="'./assets/media/svg/icons/General/Half-star.svg'"
-            cacheSVG="true"
-            class="svg-icon svg-icon-xl _curPointer"
-          ></span>
+    <div cdkDropList class="" (cdkDropListDropped)="drop($event)">
+      <div
+        *ngFor="let subCate of subCategories; let cateIndex = index"
+        class="mb-3"
+        cdkDrag
+      >
+        <div class="row _wid100 _bodyBackgroundColor _cursorMove">
+          <div class="col-6">
+            <img src="/assets/media/convobot-icon/drag-drap.png" />
 
-          <span
-            pTooltip="Delete Category"
-            [inlineSVG]="'/assets/media/svg/icons/General/Trash.svg'"
-            cacheSVG="true"
-            class="svg-icon svg-icon-xl _curPointer"
-          ></span>
-
-          <img
-            class="_curPointer ml-3"
-            (click)="subCate.collapseStatus = !subCate.collapseStatus"
-            [src]="
-              !subCate.collapseStatus
-                ? './assets/media/convobot-icon/down-arrow.png'
-                : './assets/media/convobot-icon/up-arrow.png'
-            "
-          />
-        </div>
-      </div>
-
-      <div *ngIf="!subCate.collapseStatus">
-        <div
-          class="row _wid100"
-          style="border: 1px solid #ecf1f6; padding: 10px"
-          *ngFor="let priceData of subCate.datas"
-        >
-          <div class="col-xl-9 col-lg-9 pb-1 pt-1" style="display: inherit">
+            <h5 class="mb-3 mt-3">{{ subCate.title }}</h5>
+          </div>
+          <div class="col-6 _textEnd _mauto">
             <span
-              style="padding-top: 5px; padding-right: 5px"
-              [inlineSVG]="'./assets/media/svg/icons/General/setting.svg'"
+              (click)="actionStatus = 'item'"
+              pTooltip="Add Item"
+              [inlineSVG]="'./assets/media/svg/icons/General/Half-star.svg'"
               cacheSVG="true"
-              class="svg-icon svg-icon-xl"
+              class="svg-icon svg-icon-xl _curPointer"
             ></span>
 
-            <div>
-              <span class="font-weight-bold mb-3">{{
-                priceData.sub_categories_name
-              }}</span
-              ><br />
-              <span class="text-muted">{{ priceData.price }}</span>
-            </div>
-          </div>
+            <span
+              pTooltip="Delete Category"
+              [inlineSVG]="'/assets/media/svg/icons/General/Trash.svg'"
+              cacheSVG="true"
+              class="svg-icon svg-icon-xl _curPointer"
+            ></span>
 
-          <!-- <div class="col-xl-3 col-lg-3 pb-1 pt-1" style="display: inherit"> -->
-          <div
-            class="col-xl-3 _noPaddding _textCenter"
-            style="margin: auto 0px"
-          >
-            <button
-              (click)="actionStatus = 'addOn'"
-              style="width: 85%"
-              class="btn _filterInactiveButton font-weight-bold px-2 px-lg-5 mr-2"
-            >
-              Add On
-            </button>
+            <img
+              class="_curPointer ml-3"
+              (click)="subCate.collapseStatus = !subCate.collapseStatus"
+              [src]="
+                !subCate.collapseStatus
+                  ? './assets/media/convobot-icon/down-arrow.png'
+                  : './assets/media/convobot-icon/up-arrow.png'
+              "
+            />
           </div>
         </div>
-      </div>
 
-      <!-- </div> -->
+        <div
+          *ngIf="!subCate.collapseStatus"
+          cdkDropList
+          (cdkDropListDropped)="dropOne($event, cateIndex)"
+        >
+          <div
+            class="row _wid100 _cursorMove"
+            style="border: 1px solid #ecf1f6; padding: 10px"
+            *ngFor="let priceData of subCate.datas"
+            cdkDrag
+          >
+            <div class="col-xl-8 col-lg-9 pb-1 pt-1" style="display: inherit">
+              <!-- <img src="/assets/media/convobot-icon/drag-drap.png" /> -->
+
+              <span
+                style="padding-top: 5px; padding-right: 5px"
+                [inlineSVG]="'./assets/media/svg/icons/General/setting.svg'"
+                cacheSVG="true"
+                class="svg-icon svg-icon-xl"
+              ></span>
+
+              <div>
+                <span class="font-weight-bold mb-3">{{
+                  priceData.sub_categories_name
+                }}</span
+                ><br />
+                <span class="text-muted">{{ priceData.price }}</span>
+              </div>
+            </div>
+
+            <!-- <div class="col-xl-3 col-lg-3 pb-1 pt-1" style="display: inherit"> -->
+            <div
+              class="col-xl-4 _noPaddding _textCenter"
+              style="margin: auto 0px"
+            >
+              <button
+                (click)="actionStatus = 'addOn'"
+                style="width: 65%"
+                class="
+                  btn
+                  _filterInactiveButton
+                  font-weight-bold
+                  px-2 px-lg-5
+                  mr-2
+                "
+              >
+                Add On
+              </button>
+
+              <span
+                pTooltip="Delete Item"
+                [inlineSVG]="'/assets/media/svg/icons/General/Trash.svg'"
+                cacheSVG="true"
+                class="svg-icon svg-icon-xl _curPointer"
+              ></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- </div> -->
+      </div>
     </div>
   </div>
 
-  <div class="col-xl-3" [ngSwitch]="actionStatus">
+  <div class="col-xl-4" [ngSwitch]="actionStatus">
     <div *ngSwitchCase="'item'">
       <h5 class="mt-2 mb-4">Item List</h5>
 
@@ -166,7 +192,13 @@
       <div class="mt-3 mb-3">
         <button
           (click)="actionStatus = 'category'"
-          class="btn btn-primary btn-fixed-height font-weight-bold px-2 px-lg-5 mr-3 _mlauto"
+          class="
+            btn btn-primary btn-fixed-height
+            font-weight-bold
+            px-2 px-lg-5
+            mr-3
+            _mlauto
+          "
         >
           Add Item
         </button>
@@ -180,7 +212,15 @@
           name="categoryAddType"
           value="newCategory"
           [(ngModel)]="categoryAddType"
-          label="Add New Category"
+          label="New"
+        ></p-radioButton>
+
+        <p-radioButton
+          class="ml-4"
+          name="categoryAddType"
+          value="existingCategory"
+          label="From Existing"
+          [(ngModel)]="categoryAddType"
         ></p-radioButton>
       </div>
 
@@ -198,20 +238,17 @@
         <div class="mt-3 mb-3">
           <button
             (click)="addNewCategoryFunction('category')"
-            class="btn btn-primary btn-fixed-height font-weight-bold px-2 px-lg-5 mr-3 _mlauto"
+            class="
+              btn btn-primary btn-fixed-height
+              font-weight-bold
+              px-2 px-lg-5
+              mr-3
+              _mlauto
+            "
           >
             Add category
           </button>
         </div>
-      </div>
-
-      <div class="mt3 mb-3">
-        <p-radioButton
-          name="categoryAddType"
-          value="existingCategory"
-          label="Add Existing Category"
-          [(ngModel)]="categoryAddType"
-        ></p-radioButton>
       </div>
 
       <div *ngIf="categoryAddType == 'existingCategory'">
@@ -242,7 +279,13 @@
         <div class="mt-3 mb-3">
           <button
             (click)="addOnStatus = false"
-            class="btn btn-primary btn-fixed-height font-weight-bold px-2 px-lg-5 mr-3 _mlauto"
+            class="
+              btn btn-primary btn-fixed-height
+              font-weight-bold
+              px-2 px-lg-5
+              mr-3
+              _mlauto
+            "
           >
             Add category
           </button>
@@ -253,14 +296,76 @@
     <div *ngSwitchCase="'addOn'">
       <h5 class="mt-2 mb-4">Add On</h5>
 
-      <div *ngFor="let addOn of AddOnList" class="m-4">
-        <p-checkbox [label]="addOn.addOnName"></p-checkbox>
+      <div *ngFor="let addOnGroup of addOnGroupList" class="mb-3">
+        <div class="row _wid100 _bodyBackgroundColor pb-3 pt-3">
+          <div class="col-10">
+            <p-checkbox [label]="addOnGroup.addOnGroupName"></p-checkbox>
+            <!-- <h5 class="mb-3 mt-3">{{ addOnGroup.addOnGroupName }}</h5> -->
+          </div>
+          <div class="col-2 _textEnd _mauto">
+            <!-- <span
+              pTooltip="Delete Add On Group"
+              [inlineSVG]="'/assets/media/svg/icons/General/Trash.svg'"
+              cacheSVG="true"
+              class="svg-icon svg-icon-xl _curPointer"
+            ></span> -->
+
+            <img
+              class="_curPointer ml-3"
+              (click)="addOnGroup.collapseStatus = !addOnGroup.collapseStatus"
+              [src]="
+                !addOnGroup.collapseStatus
+                  ? './assets/media/convobot-icon/down-arrow.png'
+                  : './assets/media/convobot-icon/up-arrow.png'
+              "
+            />
+          </div>
+        </div>
+
+        <div *ngIf="!addOnGroup.collapseStatus">
+          <div
+            class="row _wid100"
+            style="border: 1px solid #ecf1f6; padding: 10px"
+            *ngFor="let priceData of addOnGroup.datas"
+          >
+            <div class="col-xl-12 pb-1 pt-1" style="display: inherit">
+              <div>
+                <p-checkbox [label]="priceData.addOnName"></p-checkbox>
+                <!-- <span class="font-weight-bold mb-3">{{
+                  priceData.addOnName
+                }}</span> -->
+              </div>
+            </div>
+
+            <!-- <div class="col-xl-3 col-lg-3 pb-1 pt-1" style="display: inherit"> -->
+            <!-- <div class="col-xl-2 _noPaddding _textEnd">
+              <span
+                pTooltip="Delete Add On"
+                [inlineSVG]="'/assets/media/svg/icons/General/Trash.svg'"
+                cacheSVG="true"
+                class="svg-icon svg-icon-xl _curPointer"
+              ></span>
+            </div> -->
+          </div>
+        </div>
+
+        <!-- </div> -->
       </div>
+
+      <!-- <div *ngFor="let addOn of AddOnList" class="m-4">
+        <p-checkbox [label]="addOn.addOnName"></p-checkbox>
+      </div> -->
 
       <div class="mt-3 mb-3">
         <button
           (click)="actionStatus = 'category'"
-          class="btn btn-primary btn-fixed-height font-weight-bold px-2 px-lg-5 mr-3 _mlauto"
+          class="
+            btn btn-primary btn-fixed-height
+            font-weight-bold
+            px-2 px-lg-5
+            mr-3
+            _mlauto
+          "
         >
           Add On
         </button>
@@ -274,7 +379,15 @@
           name="subCategoryAddType"
           value="newCategory"
           [(ngModel)]="subCategoryAddType"
-          label="Add New Sub Category"
+          label="New"
+        ></p-radioButton>
+
+        <p-radioButton
+          class="ml-4"
+          name="subCategoryAddType"
+          value="existingCategory"
+          label="From Existing"
+          [(ngModel)]="subCategoryAddType"
         ></p-radioButton>
       </div>
 
@@ -292,21 +405,27 @@
         <div class="mt-3 mb-3">
           <button
             (click)="addNewCategoryFunction('subCategory')"
-            class="btn btn-primary btn-fixed-height font-weight-bold px-2 px-lg-5 mr-3 _mlauto"
+            class="
+              btn btn-primary btn-fixed-height
+              font-weight-bold
+              px-2 px-lg-5
+              mr-3
+              _mlauto
+            "
           >
             Add Sub Category
           </button>
         </div>
       </div>
 
-      <div class="mt3 mb-3">
+      <!-- <div class="mt3 mb-3">
         <p-radioButton
           name="subCategoryAddType"
           value="existingCategory"
           label="Add Existing Sub Category"
           [(ngModel)]="subCategoryAddType"
         ></p-radioButton>
-      </div>
+      </div> -->
 
       <div *ngIf="subCategoryAddType == 'existingCategory'">
         <div class="input-icon h-40px mt-2">
@@ -336,7 +455,13 @@
         <div class="mt-3 mb-3">
           <button
             (click)="addOnStatus = false"
-            class="btn btn-primary btn-fixed-height font-weight-bold px-2 px-lg-5 mr-3 _mlauto"
+            class="
+              btn btn-primary btn-fixed-height
+              font-weight-bold
+              px-2 px-lg-5
+              mr-3
+              _mlauto
+            "
           >
             Add Sub Category
           </button>

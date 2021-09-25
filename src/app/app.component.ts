@@ -7,6 +7,8 @@ import {
 import { Router, NavigationEnd } from "@angular/router";
 import { Subscription } from "rxjs";
 import { TranslationService } from "./modules/i18n/translation.service";
+import { CookieService } from "ngx-cookie-service";
+
 // language list
 import { locale as enLang } from "./modules/i18n/vocabs/en";
 import { locale as chLang } from "./modules/i18n/vocabs/ch";
@@ -16,6 +18,7 @@ import { locale as deLang } from "./modules/i18n/vocabs/de";
 import { locale as frLang } from "./modules/i18n/vocabs/fr";
 import { SplashScreenService } from "./_metronic/partials/layout/splash-screen/splash-screen.service";
 import { TableExtendedService } from "./_metronic/shared/crud-table";
+import { MessageService } from "primeng-lts/api";
 // import { PrimeNGConfig } from 'primeng/api';
 
 @Component({
@@ -27,14 +30,19 @@ import { TableExtendedService } from "./_metronic/shared/crud-table";
 })
 export class AppComponent implements OnInit, OnDestroy {
   private unsubscribe: Subscription[] = []; // Read more: => https://brianflove.com/2016/12/11/anguar-2-unsubscribe-observables/
+  vendorOnboardModelStatus: boolean = true;
+  welcomeMsgStatus: boolean = false;
 
   constructor(
     private translationService: TranslationService,
     private splashScreenService: SplashScreenService,
     private router: Router,
     private tableService: TableExtendedService,
-    // private primengConfig: PrimeNGConfig
+    private messageService: MessageService,
+    private cookieService: CookieService // private primengConfig: PrimeNGConfig
   ) {
+    console.log("cookies data", JSON.parse(this.cookieService.get("_token")));
+
     // register translations
     this.translationService.loadTranslations(
       enLang,
@@ -66,6 +74,15 @@ export class AppComponent implements OnInit, OnDestroy {
       }
     });
     this.unsubscribe.push(routerSubscription);
+  }
+
+  toastMessage(header: string, toastType: string, message: string) {
+    this.messageService.add({
+      life: 2000,
+      severity: toastType,
+      summary: header,
+      detail: message,
+    });
   }
 
   ngOnDestroy() {
